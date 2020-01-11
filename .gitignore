@@ -1,0 +1,36 @@
+# ignore vim swap files et undo files
+*.swp
+*.un~
+
+
+# Fichiers OSX
+.DS_Store
+
+# Latex auxiliary
+*.aux
+*.fls
+
+# Autres ??
+*.cut
+*.log
+*.out
+*.xdv
+*.dpth
+*.md5
+
+# ignore all .pdf files in the latex/ directory and any of its subdirectories
+latex/**/*.pdf
+
+# les tags générés de ma doc perso
+/doc/tags
+
+# spell : mon dictionnaire
+/spell
+
+
+# Répertoire ftdetect
+#/ftdetect/*
+#!/ftdetect/tex.vim
+
+
+
