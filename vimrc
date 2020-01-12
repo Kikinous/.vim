@@ -431,7 +431,8 @@ nnoremap <Leader><space> :nohlsearch<CR>
 
 " Browsing
 "    map  CTRL-P         fzf pluging
-nnoremap <Leader>n       :NERDTreeToggle<Esc>
+"nnoremap <Leader>n       :NERDTreeToggle<Esc>
+nnoremap <Leader>n       :30vs .<CR>              " use internal netrw plugin [BLOG](https://shapeshed.com/vim-netrw/)
 nnoremap <Leader>bb      :b#<Esc>
 nnoremap <Leader>bo      :browse oldfile<Esc>
 

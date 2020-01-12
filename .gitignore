@@ -27,6 +27,8 @@ latex/**/*.pdf
 # spell : mon dictionnaire
 /spell
 
+# fichiet .netrwhist  du plugin interne netrw
+.netrwhist
 
 # Répertoire ftdetect
 #/ftdetect/*
