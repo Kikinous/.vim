@@ -63,7 +63,9 @@ else                                             "
     set ttymouse=xterm2                          "
 end                                              "
 
-set autochdir                                    " change le working directory à celui du fichier
+set autochdir                                    " set working directory = fichier ouvert
+"autocmd BufEnter * silent! lcd %:p:h            " Unfortunately, when this option is set some plugins may not work correctly if they make assumptions about the current directory. Sometimes, as an alternative to setting autochdir, the following command gives better results:
+
 set path+=**                                     " :find cherchera dans les sous repertoires
 "
 set ignorecase                                   " cherche les majuscules aussi
@@ -409,16 +411,26 @@ vnoremap jk              <esc>
 " source script under cursor
 nnoremap <Leader>so      Y:@"<CR>
 vnoremap <Leader>so      y:@"<CR>
+
 " cmdheight (default=1)
 nnoremap <Leader>1      :set cmdheight=1<CR>
 nnoremap <Leader>2      :set cmdheight=2<CR>
 nnoremap <Leader>3      :set cmdheight=3<CR>
 nnoremap <Leader>4      :set cmdheight=4<CR>
 nnoremap <Leader>5      :set cmdheight=5<CR>
+
 " test de colorscheme
 nnoremap <Leader>sc     :packadd ScrollColor<CR>:SCROLLCOLOR<CR>
-" rebuild the 
+
+" rebuild all tags
 nnoremap <Leader>ht     :helptags ALL<CR>
+
+" faire un diff on every window
+nnoremap <Leader>diff   :windo difft<CR>
+
+" fugitive
+" [MANUEL](https://git-scm.com/book/en/v2)
+"nnoremap <Leader>gr    :!git reset --hard HEAD                             " reset repertoire de travail to last commit
 "}}}
 " Editing:{{{2
 " stop surlignage
@@ -428,11 +440,22 @@ nnoremap <Leader>z       :set spell<CR>
 nnoremap <Leader>Z       :set nospell<CR>
 nnoremap zs              ]s
 nnoremap zS              [s
+"
 " Browsing
+"    map  CTRL-P         fzf pluging
+nnoremap <Leader>n       :NERDTreeToggle<Esc>
 nnoremap <Leader>bb      :b#<Esc>
 nnoremap <Leader>bo      :browse oldfile<Esc>
-nnoremap <Leader>cd      :cd %:p:h<Esc>
-nnoremap <Leader>n       :NERDTreeToggle<Esc>
+"
+" [working directory](https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file)
+" - un global current directory
+" - un local  current directory par windown
+" :echo expand("%:p")                             " fichier
+" :echo expand("%:p:h")                           " chemin
+nnoremap <Leader>cd      :cd %:p:h<Esc>           " set working directory de toutes les windows
+nnoremap <Leader>lcd     :lcd %:p:h<Esc>          " set working directory de la window active
+"
+" FIX gx est cassé et n'ouvre plus le lien sous le curseur
 nnoremap <Leader>gx      mGgf:!open %<CR>:b#<CR>:bd#<CR><CR>`G " gx cassé
 " Comments
 " -- Methode 1 - normal mode
@@ -540,7 +563,7 @@ endif
 "}}}
 " Particular_Files:{{{2
 " ConfigFiles
-nnoremap <Leader>ev      :e ~/.vimrc<Esc>
+nnoremap <Leader>ev      :e ~/.vim/vimrc<CR>
 nnoremap <Leader>ez      :e ~/.zshrc<Esc>
 nnoremap <Leader>el      :e ~/.vim/after/ftplugin/tex/tex.vim<Esc>
 nnoremap <Leader>es      :e ~/.vim/spell/fr.utf-8.add<Esc>
@@ -616,6 +639,7 @@ augroup END
 "}}} "}}}
 " PLUGINS: {{{1
 " DOC: {{{2
+" [TUTO submodules](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/)
 " :scriptnames
 " :helptags ALL
 " vim --startuptime file.log
@@ -659,20 +683,27 @@ let g:dispatch_no_maps = 1                       " no new maps
 " File lifecycle :       Unmodified | Modified | Staged
 " -- [SOURCE](https://github.com/tpope/vim-fugitive)
 " -- [BOOK](https://git-scm.com/book/en/v2)
-" -- [TUTO](http://vimcasts.org/categories/git)
-"
+" -----------------------------
 " 0. Unmodified -->  Modified -->  Staged  (v.s. parent commit)
 " :G                           git status
+"      -                       toggle modified / stagged
 "      g?                      show fugitive-maps
 "      gq                      close status buffer
 "      gq                      close status buffer
-" 1. Modified <--> Staged      [TUTO](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
+" -----------------------------
+" 1. Modified                  1 buffer
+"                              [TUTO](http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/)
+" :Gedit                       view staged
+" :Gread                       view last commit
+" :Gwrite                      add modification to stage (git add %)
+" -----------------------------
+" 2. Modified <--> Staged      2 buffers
+"                              [TUTO](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
 " :Gdiff                       diff entre Modified et staged
-" :Gedit                       open Staged
-" :Gwrite :Gread               global reconciliation
-" :diffget :diffput            local reconciliation
-"
-" 2. Unmodified v.s. Staged    
+"      :Gwrite :Gread          global reconciliation
+"      :diffget :diffput       local reconciliation
+" -----------------------------
+" 3. Unmodified v.s. Staged    
 " :G                           git status
 "      D                       git diff --cached [stackoverflow](https://stackoverflow.com/questions/15407652/how-can-i-run-git-diff-staged-with-fugitive)
 " :Gcommit                     commit
