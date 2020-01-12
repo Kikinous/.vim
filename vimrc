@@ -654,14 +654,13 @@ let g:lightline.tab = {
 " Plugin: netrw {{{3
 " -- [TUTO](http://vimcasts.org/episodes/the-file-explorer/)
 " -- :help pi_netrw.txt
-" i cycle view types
-let g:netrw_liststyle = 3                         " 1:thin 2:long 3:wide 4:tree
-" I toggle banner
-let g:netrw_banner = 0                            " remove banner
+
+let g:netrw_liststyle = 3            " 1:thin 2:long 3:wide 4:tree          " i cycle view types
+let g:netrw_banner = 0               " remove banner                        " I toggle banner
 " how are openned files
-let g:netrw_browse_split = 2                      " 1:hs 2:vs 3:tab 4:previous window
-let g:netrw_altv = 1                              " change left to right splitting
-let g:netrw_winsize = 25                          " 25% de la page
+let g:netrw_browse_split = 2         " 1:hs 2:vs 3:tab 4:previous window    " p preview <c-W>z close
+let g:netrw_altv = 1                 " change left to right splitting
+let g:netrw_winsize = 25             " 25% de la page
 "augroup ProjectDrawer
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
