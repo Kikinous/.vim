@@ -83,8 +83,6 @@ let g:languagetool_jar='$HOME/.vim/julien/LanguageTool/languagetool.jar'
 " ouvre help vsplit à droite
 cnoreabbrev h botright vert h
 set rtp+=/opt/local/share/fzf/vim                "fuzzy file finder Doc: /opt/local/share/doc/fzf
-" gx ouvre avec open
-let g:netrw_browsex_viewer= '-'
 "}}}
 " Edition: {{{2
 set encoding=utf8                                " A garder ?
@@ -221,7 +219,6 @@ function! EffaceMapping() "{{{2
   silent! unmap g'!                    " & <SNR>45_:.Spawn!
   silent! unmap g'<Space>              " & <SNR>45_:.Spawn<Space>
   silent! unmap g'<CR>                 " & <SNR>45_:.Spawn<CR>
-  silent! unmap gx                     "   <Plug>NetrwBrowseX
   silent! unmap m?                     " & :<C-U>echo ":Dispatch" dispatch#make_focus(v:count > 1 ? 0 : v:count ? line(".") : -1)<CR>
   silent! unmap m!                     " & <SNR>45_:.Make!
   silent! unmap m<Space>               " & <SNR>45_:.Make<Space>
@@ -444,9 +441,6 @@ nnoremap <Leader>bo      :browse oldfile<Esc>
 nnoremap <Leader>cd      :cd %:p:h<Esc>           " set working directory de toutes les windows
 nnoremap <Leader>lcd     :lcd %:p:h<Esc>          " set working directory de la window active
 
-" FIX gx est cassé et n'ouvre plus le lien sous le curseur
-nnoremap <Leader>gx      mGgf:!open %<CR>:b#<CR>:bd#<CR><CR>`G " gx cassé
-
 " Tags
 "mapping obsolètes : en fait <c-]> = <c-$> sur AZERTY
 "nnoremap <c-t>n          <c-]>                 " <c-]> = <c-$> sur AZERTY
@@ -657,7 +651,8 @@ let g:lightline.tab = {
     \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
 "
 " }}}
-" Plugin: netrw "{{{3
+" Plugin: netrw {{{3
+" -- [TUTO](http://vimcasts.org/episodes/the-file-explorer/)
 " -- :help pi_netrw.txt
 " i cycle view types
 let g:netrw_liststyle = 3                         " 1:thin 2:long 3:wide 4:tree
