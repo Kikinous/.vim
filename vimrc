@@ -697,11 +697,13 @@ let g:dispatch_no_maps = 1                       " no new maps
 " :Gread                       view last commit
 " :Gwrite                      add modification to stage (git add %)
 " -----------------------------
-" 2. Modified <--> Staged      2 buffers
-"                              [TUTO](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
+" 2. Modified <--> Staged      
+" 2.1 Split diff               [TUTO](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
 " :Gdiff                       diff entre Modified et staged
 "      :Gwrite :Gread          global reconciliation
 "      :diffget :diffput       local reconciliation
+" 2.2 In line diff             [TUTO](https://www.youtube.com/watch?v=2KqNqk6oV6Q)
+" =                            les diff apparaissent
 " -----------------------------
 " 3. Unmodified v.s. Staged    
 " :G                           git status
