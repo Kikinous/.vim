@@ -657,8 +657,22 @@ let g:lightline.tab = {
     \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
 "
 " }}}
-" Plugin: nerdtree "{{{3
-let NERDTreeShowHidden=1 "}}}
+" Plugin: netrw "{{{3
+" -- :help pi_netrw.txt
+" i cycle view types
+let g:netrw_liststyle = 3                         " 1:thin 2:long 3:wide 4:tree
+" I toggle banner
+let g:netrw_banner = 0                            " remove banner
+" how are openned files
+let g:netrw_browse_split = 2                      " 1:hs 2:vs 3:tab 4:previous window
+let g:netrw_altv = 1                              " change left to right splitting
+let g:netrw_winsize = 25                          " 25% de la page
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+" 
+""}}}
 " Plugin: tabular {{{3
 if exists(":Tabularize")
 "   But, now that this command does exactly what we want it to, it's become pretty
