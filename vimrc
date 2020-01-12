@@ -423,30 +423,18 @@ nnoremap <Leader>5      :set cmdheight=5<CR>
 nnoremap <Leader>sc     :packadd ScrollColor<CR>:SCROLLCOLOR<CR>
 
 " rebuild all tags
-nnoremap <Leader>ht     :helptags ALL<CR>
+nnoremap <Leader>ht     :helptags ALL<CR> " faire un diff on every window nnoremap <Leader>diff   :windo difft<CR> " fugitive " [MANUEL](https://git-scm.com/book/en/v2) "nnoremap <Leader>gr    :!git reset --hard HEAD                             " reset repertoire de travail to last commit "}}}
+" Navigating:{{{2
 
-" faire un diff on every window
-nnoremap <Leader>diff   :windo difft<CR>
-
-" fugitive
-" [MANUEL](https://git-scm.com/book/en/v2)
-"nnoremap <Leader>gr    :!git reset --hard HEAD                             " reset repertoire de travail to last commit
-"}}}
-" Editing:{{{2
 " stop surlignage
 nnoremap <Leader><space> :nohlsearch<CR>
-" Spelling
-nnoremap <Leader>z       :set spell<CR>
-nnoremap <Leader>Z       :set nospell<CR>
-nnoremap zs              ]s
-nnoremap zS              [s
-"
+
 " Browsing
 "    map  CTRL-P         fzf pluging
 nnoremap <Leader>n       :NERDTreeToggle<Esc>
 nnoremap <Leader>bb      :b#<Esc>
 nnoremap <Leader>bo      :browse oldfile<Esc>
-"
+
 " [working directory](https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file)
 " - un global current directory
 " - un local  current directory par windown
@@ -454,9 +442,32 @@ nnoremap <Leader>bo      :browse oldfile<Esc>
 " :echo expand("%:p:h")                           " chemin
 nnoremap <Leader>cd      :cd %:p:h<Esc>           " set working directory de toutes les windows
 nnoremap <Leader>lcd     :lcd %:p:h<Esc>          " set working directory de la window active
-"
+
 " FIX gx est cassé et n'ouvre plus le lien sous le curseur
 nnoremap <Leader>gx      mGgf:!open %<CR>:b#<CR>:bd#<CR><CR>`G " gx cassé
+
+" Tags
+"mapping obsolètes : en fait <c-]> = <c-$> sur AZERTY
+"nnoremap <c-t>n          <c-]>                 " <c-]> = <c-$> sur AZERTY
+"nnoremap <c-t>p          <c-t>                 " ^ sur AZERTY
+
+" Marks                                         " :help mark-motions
+nnoremap <Leader>ml      :marks<CR>
+nnoremap <Leader>md      :delmarks a-z<CR>      " minuscule : single file
+nnoremap <Leader>mD      :delmarks A-Z<CR>      " majuscule : global
+if exists(":SignatureToggleSigns")              " plugin: vim-signature
+  nnoremap <Leader>st      :SignatureToggleSigns<Esc>
+  nnoremap <Leader>sr      :SignatureRefresh<Esc>
+  nnoremap <Leader>sl      :SignatureListBufferMarks<Esc>
+  nnoremap <Leader>sL      :SignatureListGlobalMarks<Esc>
+endif
+"}}}
+" Editing:{{{2
+" Spelling
+nnoremap <Leader>z       :set spell<CR>
+nnoremap <Leader>Z       :set nospell<CR>
+nnoremap zs              ]s
+nnoremap zS              [s
 " Comments
 " -- Methode 1 - normal mode
 nnoremap  <Leader>cc     :s/^/"/<CR>:nohls<CR>
@@ -470,26 +481,10 @@ nnoremap  <Leader>cu     :s/^"//<CR>:nohls<CR>
 "autocmd FileType vim              let b:comment_leader = '" '
 "noremap <silent> <Leader>cc     :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 "noremap <silent> <Leader>cu     :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+
 " Format paragraph
 nnoremap <Leader>gw      gwap
 nnoremap <Leader>gq      gqap
-
-" Tags
-nnoremap <c-t>n          <c-]>
-nnoremap <c-t>p          <c-t>
-
-" Marks                                         " :help mark-motions
-nnoremap <c-t>n          <c-]>
-nnoremap <c-t>p          <c-t>
-nnoremap <Leader>ml      :marks<CR>
-nnoremap <Leader>md      :delmarks a-z<CR>      " minuscule : single file
-nnoremap <Leader>mD      :delmarks A-Z<CR>      " majuscule : global
-if exists(":SignatureToggleSigns")              " plugin: vim-signature
-  nnoremap <Leader>st      :SignatureToggleSigns<Esc>
-  nnoremap <Leader>sr      :SignatureRefresh<Esc>
-  nnoremap <Leader>sl      :SignatureListBufferMarks<Esc>
-  nnoremap <Leader>sL      :SignatureListGlobalMarks<Esc>
-endif
 
 " Tabularize                                    " :help Tabular.txt
 if exists(":Tabularize")                        " plugin : tabular
@@ -553,12 +548,10 @@ if exists(":Tabularize")                        " plugin : tabular
   noremap <Leader>t]     :Tabularize /^[^]]*\zs/l0c0<CR> " align first ]  / (left+0space)  ; (center+0space)
   " meme chose grace à une TabularPattern défini ci-après
   noremap <Leader>tml    :Tabularize markdown_liens<CR>  " AddTabularPattern défini ci dessous
- " Table:
+ " Table
  " -- alignement des | automatique
  " -- tpope
   inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-  "test
-
 endif
 "}}}
 " Particular_Files:{{{2
