@@ -406,11 +406,9 @@ inoremap jk              <esc>
 vnoremap jk              <esc>
 "}}}
 " Debuging: {{{2
-" execute line
+" source script under cursor
 nnoremap <Leader>so      Y:@"<CR>
-" execute visual selection
 vnoremap <Leader>so      y:@"<CR>
-nnoremap <Leader><space> :nohlsearch<CR>
 " cmdheight (default=1)
 nnoremap <Leader>1      :set cmdheight=1<CR>
 nnoremap <Leader>2      :set cmdheight=2<CR>
@@ -418,9 +416,13 @@ nnoremap <Leader>3      :set cmdheight=3<CR>
 nnoremap <Leader>4      :set cmdheight=4<CR>
 nnoremap <Leader>5      :set cmdheight=5<CR>
 " test de colorscheme
-nnoremap <Leader>co     :packadd ScrollColor<CR>:SCROLLCOLOR<CR>
+nnoremap <Leader>sc     :packadd ScrollColor<CR>:SCROLLCOLOR<CR>
+" rebuild the 
+nnoremap <Leader>ht     :helptags ALL<CR>
 "}}}
 " Editing:{{{2
+" stop surlignage
+nnoremap <Leader><space> :nohlsearch<CR>
 " Spelling
 nnoremap <Leader>z       :set spell<CR>
 nnoremap <Leader>Z       :set nospell<CR>
@@ -637,9 +639,9 @@ let g:lightline.tab = {
     \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
 "
 " }}}
-" Plugin: nerdtree
-let NERDTreeShowHidden=1
-" Plugin: tabular
+" Plugin: nerdtree "{{{3
+let NERDTreeShowHidden=1 "}}}
+" Plugin: tabular {{{3
 if exists(":Tabularize")
 "   But, now that this command does exactly what we want it to, it's become pretty
 "   unwieldy.  It would be unpleasant to need to type that more than once or
@@ -647,11 +649,37 @@ if exists(":Tabularize")
     AddTabularPattern! first_comma_left  /^[^,]*\zs,/l1c0
     AddTabularPattern! first_comma_right /^[^,]*\zs,/r1c0
     AddTabularPattern! markdown_liens /^[^]]*\zs/l0c0
-
-endif
-" Plugin: vim-dispatch
+endif "}}}
+" Plugin: vim-dispatch {{{3
+" commandes externes dans tmux
+" QuickFix par :Copen
 let g:dispatch_no_maps = 1                       " no new maps
+"}}}
+" Plugin: vim-fugitive {{{3
+" File lifecycle :       Unmodified | Modified | Staged
+" -- [SOURCE](https://github.com/tpope/vim-fugitive)
+" -- [BOOK](https://git-scm.com/book/en/v2)
+" -- [TUTO](http://vimcasts.org/categories/git)
+"
+" 0. Unmodified -->  Modified -->  Staged  (v.s. parent commit)
+" :G                           git status
+"      g?                      show fugitive-maps
+"      gq                      close status buffer
+"      gq                      close status buffer
+" 1. Modified <--> Staged      [TUTO](http://vimcasts.org/episodes/fugitive-vim-working-with-the-git-index/)
+" :Gdiff                       diff entre Modified et staged
+" :Gedit                       open Staged
+" :Gwrite :Gread               global reconciliation
+" :diffget :diffput            local reconciliation
+"
+" 2. Unmodified v.s. Staged    
+" :G                           git status
+"      D                       git diff --cached [stackoverflow](https://stackoverflow.com/questions/15407652/how-can-i-run-git-diff-staged-with-fugitive)
+" :Gcommit                     commit
+"
+" }}}
 " Plugin: vim-signature {{{3
+" markers dans la marge
 " :SignatureToggleSigns       voir MAPPINGS
 " :SignatureListBufferMarks   voir MAPPINGS
 let g:SignatureMap = {
@@ -682,8 +710,7 @@ let g:SignatureMap = {
 " $HOME/.vim/pack/lesplugins/opt
 " gruvbox
 " grammarous-vim
-" vim-matrix-screensaver                         :packadd vim-matrix-screensaver | set nonu | set nornu | call Matrix()
-" ScrollColor                                    :packadd ScrollColor            | SCROLLCOLOR
+" ScrollColor                                    " tester les colorscheme installés
 " }}} " }}}
 
-" vim: foldmethod=marker : foldlevel=1 : modifiable
+" vim: foldmethod=marker : foldlevel=1 : modifiable : ve=all

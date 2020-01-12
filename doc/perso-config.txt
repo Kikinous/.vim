@@ -8,7 +8,8 @@ CONTENTS                                                  *perso-config-content*
 
 1.Fichiers.......................................|perso-fichiers|
 2.LaTeX..........................................|perso-latex|
-3.Divers.........................................|perso-divers|
+3.Outils.........................................|perso-outils|
+4.Divers.........................................|perso-divers|
 
 ==============================================================================
 1. Fichiers                                                   *perso-fichiers*
@@ -24,6 +25,10 @@ CONTENTS                                                  *perso-config-content*
 |~/.vim/spell|     : dictionaries
 |~/.vim/syntax|    : hack for latex plugin syntax highlighting
 
+==============================================================================
+2. Outils                                                        *perso-outils*
+
+|defilement_colorscheme|  <Leader>sc     : fait défiler les colorscheme       
 
 ==============================================================================
 2. LaTeX                                                         *perso-latex*
