@@ -686,4 +686,4 @@ let g:SignatureMap = {
 " ScrollColor                                    :packadd ScrollColor            | SCROLLCOLOR
 " }}} " }}}
 
-" vim: foldmethod=marker : foldlevel=1 : nomodifiable
+" vim: foldmethod=marker : foldlevel=1 : modifiable
