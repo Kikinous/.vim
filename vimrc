@@ -98,6 +98,24 @@ iabbr lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius
 "}}}
 "}}} "}}}
 " FUNCTIONS: {{{1
+function! AlignDroite() "{{{2
+  " Fonction: alignement à droite à 80 caracteres
+  " Julien Borghetti  v1.0  (2020-01-13)
+  set cmdheight=4                                                               " évite le 'Hit ENTER to continue'
+  echohl WarningMsg | echom 'DEBUG : AlignDroite() commence' |                  " ecriture en rouge
+  echon '                   [:mess {clear} pour historique]' |                  " sur la même ligne
+  " 1. xyz...... devient ......xyz
+  set virtualedit=all                                                           " peut aller où il n'y a pas de lettres
+  :execute "normal! 079lvbelr." |                                               " avance de 79 pour arriver à 80
+  " 2. xyz...... devient ......xyz
+  :execute "normal! d$0P"
+  " 3. ......xyz devient       xyz
+  :s/\./ /g
+  echom 'DEBUG : AlignDroite() fini' | echohl None                              " retour au blanc
+  return
+endfunction
+nnoremap <leader>ad  :call AlignDroite()<CR>
+" }}}
 function! CompilePandoc() "{{{2
     if exists("g:loaded_dispatch")
 "       DEBUG START:
@@ -259,9 +277,9 @@ endfunction "}}}
 function! Modele() "{{{2
   " Fonction: snippet d'une fonction vimscript
   " Julien Borghetti  v1.0  (2020-01-13)
+  set cmdheight=4                                                               " évite le 'Hit ENTER to continue'
   echohl WarningMsg | echom 'DEBUG : Modele() commence' |                       " ecriture en rouge
   echon '                        [:mess {clear} pour historique]' |             " sur la même ligne
-  set cmdheight=4                                                               " évite le 'Hit ENTER to continue'
   "
   " Code
   "
@@ -444,7 +462,7 @@ nnoremap <Leader><space> :nohlsearch<CR>
 "    map  CTRL-P         fzf pluging
 "nnoremap <Leader>n       :NERDTreeToggle<Esc>
 nnoremap <Leader>n       :30vs .<CR>              " use internal netrw plugin [BLOG](https://shapeshed.com/vim-netrw/)
-nnoremap <Leader>bb      :b#<Esc>
+"nnoremap <Leader>bb ":b#<Esc>                    " obsolète :  CTRL-^ switch to the alternate file
 nnoremap <Leader>bo      :browse oldfile<Esc>
 
 " [working directory](https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file)
@@ -472,11 +490,16 @@ if exists(":SignatureToggleSigns")              " plugin: vim-signature
 endif
 "}}}
 " Editing:{{{2
+
+" Invisible characters : on/off
+nnoremap <Leader>l       :set list!<CR>                                         
+
 " Spelling
 nnoremap <Leader>z       :set spell<CR>
 nnoremap <Leader>Z       :set nospell<CR>
 nnoremap zs              ]s
 nnoremap zS              [s
+
 " Comments
 " -- Methode 1 - normal mode
 nnoremap  <Leader>cc     :s/^/"/<CR>:nohls<CR>
@@ -670,7 +693,7 @@ let g:lightline.tab = {
 " -- :help pi_netrw.txt
 
 let g:netrw_liststyle = 3            " 1:thin 2:long 3:wide 4:tree          " i cycle view types
-let g:netrw_banner = 0               " remove banner                        " I toggle banner
+let g:netrw_banner = 1               " 0:remove 1:keep                      " I toggle banner
 " how are openned files
 let g:netrw_browse_split = 2         " 1:hs 2:vs 3:tab 4:previous window    " p preview <c-W>z close
 let g:netrw_altv = 1                 " change left to right splitting
@@ -762,4 +785,4 @@ let g:SignatureMap = {
 " ScrollColor                                    " tester les colorscheme installés
 " }}} " }}}
 
-" vim: foldmethod=marker : foldlevel=1 : modifiable : ve=all
+" vim: foldmethod=marker : foldlevel=1 : modifiable : virtualedit=all
