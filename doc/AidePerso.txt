@@ -1,5 +1,5 @@
 *AidePerso.txt* Mes procédures d'utilisation.
-
+                                                                            *aide*
                          _     _         _____                     ~
                    /\   (_)   | |       |  __ \                    ~
                   /  \   _  __| | ___   | |__) |__ _ __ ___  ___   ~
@@ -7,24 +7,22 @@
                 / ____ \| | (_| |  __/  | |  |  __/ |  \__ \ (_) | ~
                /_/    \_\_|\__,_|\___|  |_|   \___|_|  |___/\___/  ~
                                                                   
+                              La 'doc' de ma config.
 
-                 	        Julien Borghetti
-
-
-================================================================================
-CONTENTS                                                            *AideFichiers*
+But: >
+ Latex, Markdown, Prise de notes, sys-admin.
 
 1. Fichiers ........................... |AideFichiers|
 2. Outils ............................. |AideOutils|
-2.1. Configuration .................... |AideConfiguration|
-2.2. Navigation ....................... |AideNavigation|
-2.3. Edition .......................... |AideEdition|
-2.4. Programmation .................... |AideProgrammation|
-2.5. Divers ........................... |AideDivers|
+  2.1. Configuration .................. |AideConfiguration|
+  2.2. Navigation ..................... |AideNavigation|
+  2.3. Edition ........................ |AideEdition|
+  2.4. Programmation .................. |AideProgrammation|
+  2.5. Prise de notes.................. |AideNotes|
+  2.6. Divers ......................... |AideDivers|
 3. LaTeX .............................. |AideLaTeX|
 4. Markdown ........................... |AideMarkdown|
 5. Divers ............................. |AideDivers|
-
 
 ================================================================================
 SECTION 1 : Fichiers                                                *AideFichiers*
@@ -46,12 +44,14 @@ SECTION 2 : Outils                                                    *AideOutil
 
 --------------------------------------------------------------------------------
 2.1 Configuration                                              *AideConfiguration*
+
 <Leader>sc               défiler les colorscheme       
 <Leader>ht               helptags rebuild
 
 
 --------------------------------------------------------------------------------
 2.2 Navigations                                                  *AideNavigations*
+
 gf                       edit file under cursor
 gx                       open file under cursor
 :e                       edit (file or directory)
@@ -70,17 +70,31 @@ CTRL-t                   jump back
 
 --------------------------------------------------------------------------------
 2.3 Edition                                                          *AideEdition*
+
 :w !sudo tee %           sauvegarde avec les droits admins
 !!                       write command stdout in buffer
 
 
 --------------------------------------------------------------------------------
 2.4 Programmation                                              *AideProgrammation*
+
 gd                       go declaration (of the local function)
 
 
 --------------------------------------------------------------------------------
-2.5 Divers                                                            *AideDivers*
+2.5 Prise de notes                                                     *AideNotes*
+
+<Leader>ww               wiki work
+<Leader>wp               wiki perso
+gf                       go file
+gx                       go execute
+CTRL-o                   out (back)
+CTRL-i                   in  (back in)
+
+
+--------------------------------------------------------------------------------
+2.6 Divers                                                            *AideDivers*
+
 c_CTRL-r                 tricks (command mode) 
 i_CTRL-x                 tricks (insert  mode) 
 CTRL-X                   subtract
