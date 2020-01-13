@@ -114,7 +114,7 @@ function! AlignDroite() "{{{2
   echom 'DEBUG : AlignDroite() fini' | echohl None                              " retour au blanc
   return
 endfunction
-nnoremap <leader>ad  :call AlignDroite()<CR>
+nnoremap <Leader>ad  :call AlignDroite()<CR>
 " }}}
 function! CompilePandoc() "{{{2
     if exists("g:loaded_dispatch")
@@ -286,7 +286,7 @@ function! Modele() "{{{2
   echom 'DEBUG : Modele() fini' | echohl None                                   " retour au blanc
   return
 endfunction
-nnoremap <leader>tt  :call Modele()<CR>
+nnoremap <Leader>tt  :call Modele()<CR>
 "}}}
 " SaveAndExecutePython() {{{2
 let s:buf_nr = -1

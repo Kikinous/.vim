@@ -48,6 +48,12 @@ SECTION 2 : Outils                                                    *AideOutil
 <Leader>sc               défiler les colorscheme       
 <Leader>ht               helptags rebuild
 
+Install plugins as submodules >
+ cd ~/.vim 
+ git submodule add https://github.com/arp242/startscreen.vim.git pack/lesplugins/start/startscreen
+ git add .
+ git commit -m "Install startscreen.vim as a submodule."
+
 
 --------------------------------------------------------------------------------
 2.2 Navigations                                                  *AideNavigations*

@@ -1,3 +1,6 @@
 [submodule "pack/lesplugins/start/vim-fugitive"]
 	path = pack/lesplugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule "pack/lesplugins/start/startscreen"]
+	path = pack/lesplugins/start/startscreen
+	url = https://github.com/arp242/startscreen.vim.git
