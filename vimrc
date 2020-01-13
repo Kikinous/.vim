@@ -261,14 +261,15 @@ function! Modele() "{{{2
   " Julien Borghetti  v1.0  (2020-01-13)
   echohl WarningMsg | echom 'DEBUG : Modele() commence' |                       " ecriture en rouge
   echon '                        [:mess {clear} pour historique]' |             " sur la même ligne
-  echom 'DEBUG : Modele() fini' | echohl None                                   " retour au blanc
+  set cmdheight=4                                                               " évite le 'Hit ENTER to continue'
   "
   " Code
   "
+  echom 'DEBUG : Modele() fini' | echohl None                                   " retour au blanc
   return
 endfunction
-" ,tt pour tester
-nnoremap <leader>tt  :call Modele()<CR> "}}}
+nnoremap <leader>tt  :call Modele()<CR>
+"}}}
 " SaveAndExecutePython() {{{2
 let s:buf_nr = -1
 function! SaveAndExecutePython()
