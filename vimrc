@@ -256,6 +256,19 @@ function! s:align() "{{{2
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction "}}}
+function! Modele() "{{{2
+  " Fonction: snippet d'une fonction vimscript
+  " Julien Borghetti  v1.0  (2020-01-13)
+  echohl WarningMsg | echom 'DEBUG : Modele() commence' |                       " ecriture en rouge
+  echon '                        [:mess {clear} pour historique]' |             " sur la même ligne
+  echom 'DEBUG : Modele() fini' | echohl None                                   " retour au blanc
+  "
+  " Code
+  "
+  return
+endfunction
+" ,tt pour tester
+nnoremap <leader>tt  :call Modele()<CR> "}}}
 " SaveAndExecutePython() {{{2
 let s:buf_nr = -1
 function! SaveAndExecutePython()
