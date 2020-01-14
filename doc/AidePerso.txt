@@ -1,5 +1,6 @@
 *AidePerso.txt* Mes procédures d'utilisation.
-                                                                            *aide*
+
+                                                                  *aide* *AidePerso*
                          _     _         _____                     ~
                    /\   (_)   | |       |  __ \                    ~
                   /  \   _  __| | ___   | |__) |__ _ __ ___  ___   ~
@@ -23,6 +24,7 @@ But: >
 3. LaTeX .............................. |AideLaTeX|
 4. Markdown ........................... |AideMarkdown|
 5. Divers ............................. |AideDivers|
+
 
 ================================================================================
 SECTION 1 : Fichiers                                                *AideFichiers*
@@ -84,7 +86,11 @@ CTRL-t                   jump back
 --------------------------------------------------------------------------------
 2.4 Programmation                                              *AideProgrammation*
 
-gd                       go declaration (of the local function)
+*gd*                       go declaration (of the local function)
+i_<CTRL-r>=              dial up |@=| mode (espression register mode)
+v_<CTRL-r>=              dial up |@=| mode (espression register mode)
+=_<CTRL-r>"              paste default register onto the command line (= mode)
+x_<CTRL-r>"              paste default register onto the command line (x mode)
 
 
 --------------------------------------------------------------------------------
@@ -103,8 +109,8 @@ CTRL-i                   in  (back in)
 
 c_CTRL-r                 tricks (command mode) 
 i_CTRL-x                 tricks (insert  mode) 
-CTRL-X                   subtract
-CTRL-A                   add (broken)
+CTRL-x                   subtract
+CTRL-a                   add (broken)
 
 
 ================================================================================
@@ -128,6 +134,11 @@ SECTION 5 : Divers.                                                   *AideDiver
    https://devhints.io/vim-help  Cheatsheet help file syntax
 
 
+--------------------------------------------------------------------------------
+DEBUG~
+>
+ set ft=txt
+ set ft=help
 
 vim:tw=78:ts=8:noet:ft=help:norl:ma:ve=all
                                                    
