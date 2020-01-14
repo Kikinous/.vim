@@ -778,6 +778,23 @@ let g:SignatureMap = {
     \ 'ListBufferMarkers'  :  "m?"
     \ }
 " }}} "}}}
+" Plugin: startscreen  {{{3
+function! T()
+    set ft=help
+    " Read on our TODO file
+    " read ~/TODO
+    read !fortune | cowsay
+
+    " Some margin for readability
+    :silent %>>
+
+    read ~/.vim/doc/intro.txt 
+
+    " Go to line 1
+    :1
+endfun
+let g:Startscreen_function = function('T')
+"}}}
 " OPTIONAL_PLUGINS: {{{2
 " $HOME/.vim/pack/lesplugins/opt
 " gruvbox
