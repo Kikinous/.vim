@@ -1,8 +1,9 @@
 
 
-            |:help| |aide|
-*,ww*         |:edit| `~/Documents/EN/cours/admin/wiki/Index.mdi`<CR>
-*,wp*         |:edit| `~/Documents/wiki/Index.md`<CR>
+            :help |aide|
+            :help |cheatsheet|
+*,ww*         :edit `~/Documents/EN/cours/admin/wiki/Index.md`
+*,wp*         :edit `~/Documents/wiki/Index.md`
 
 >
  ~/.vim/doc/intro.txt

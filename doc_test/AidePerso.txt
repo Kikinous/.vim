@@ -1,4 +1,4 @@
-*AidePerso.txt* Mes procédures d'utilisation.
+*AidePerso.txt*  Mes procédures d'utilisation
 
                                                                   *aide* *AidePerso*
                          _     _         _____                     ~
@@ -9,6 +9,8 @@
                /_/    \_\_|\__,_|\___|  |_|   \___|_|  |___/\___/  ~
                                                                   
                               La 'doc' de ma config.
+
+	*Todo	nouveau nom: VimOffice
 
 But: >
  Latex, Markdown, Prise de notes, sys-admin.
@@ -24,6 +26,7 @@ But: >
 3. LaTeX .............................. |AideLaTeX|
 4. Markdown ........................... |AideMarkdown|
 5. Divers ............................. |AideDivers|
+5. Références.......................... |AideReferences|
 
 
 ================================================================================
@@ -39,6 +42,7 @@ SECTION 1 : Fichiers                                                *AideFichier
 |~/.vim/pack|       plugins
 |~/.vim/spell|      dictionaries
 |~/.vim/syntax|     hack for latex plugin syntax highlighting
+	*Todo	nouveau nom: VimOffice
 
 
 ================================================================================
@@ -47,8 +51,8 @@ SECTION 2 : Outils                                                    *AideOutil
 --------------------------------------------------------------------------------
 2.1 Configuration                                              *AideConfiguration*
 
-<Leader>sc               défiler les colorscheme       
-<Leader>ht               helptags rebuild
+<Leader>sc              défiler les colorscheme       
+<Leader>ht              helptags rebuild
 
 Install plugins as submodules >
  cd ~/.vim 
@@ -59,62 +63,63 @@ Install plugins as submodules >
 
 --------------------------------------------------------------------------------
 2.2 Navigations                                                  *AideNavigations*
-
-gf                       edit file under cursor
-gx                       open file under cursor
-:e                       edit (file or directory)
-:f                       find file
-:sf                      split find file
-<Leader>n                file explorer netrw
-                         *netrw*
-                         p            preview open
-                         <c-W>z       preview close
-                         I            toggle banner
-                         i            cycle view
-CTRL-^                   switch to the alternate file
-CTRL-$                   jump to tag
-CTRL-t                   jump back
+`........................`
+gf                      edit file under cursor
+gx                      open file under cursor
+:e                      edit (file or directory)
+:f                      find file
+:sf                     split find file
+<Leader>n               file explorer netrw
+                        *netrw*
+                        p            preview open
+                        <c-W>z       preview close
+                        I            toggle banner
+                        i            cycle view
+CTRL-^                  switch to the alternate file
+CTRL-$                  jump to tag
+CTRL-t                  jump back
                        
 
 --------------------------------------------------------------------------------
 2.3 Edition                                                          *AideEdition*
-
-:w !sudo tee %           sauvegarde avec les droits admins
-!!                       write command stdout in buffer
+`------------------------`
+:w !sudo tee %          sauvegarde avec les droits admins
+!!                      write command stdout in buffer
 
 
 --------------------------------------------------------------------------------
 2.4 Programmation                                              *AideProgrammation*
-
-*gd*                       go declaration (of the local function)
-i_<CTRL-r>=              dial up |@=| mode (espression register mode)
-v_<CTRL-r>=              dial up |@=| mode (espression register mode)
-=_<CTRL-r>"              paste default register onto the command line (= mode)
-x_<CTRL-r>"              paste default register onto the command line (x mode)
+`------------------------`
+*gd*                      go declaration (of the local function)
+i_<CTRL-r>=             dial up |@=| mode (espression register mode)
+v_<CTRL-r>=             dial up |@=| mode (espression register mode)
+=_<CTRL-r>"             paste default register onto the command line (= mode)
+x_<CTRL-r>"             paste default register onto the command line (x mode)
 
 
 --------------------------------------------------------------------------------
 2.5 Prise de notes                                                     *AideNotes*
-
-<Leader>ww               wiki work
-<Leader>wp               wiki perso
-gf                       go file
-gx                       go execute
-CTRL-o                   out (back)
-CTRL-i                   in  (back in)
+`------------------------`
+<Leader>ww              wiki work
+<Leader>wp              wiki perso
+*gf*                      go file
+*gx*                      go execute
+CTRL-o                  out (back)
+CTRL-i                  in  (back in)
 
 
 --------------------------------------------------------------------------------
 2.6 Divers                                                            *AideDivers*
-
-c_CTRL-r                 tricks (command mode) 
-i_CTRL-x                 tricks (insert  mode) 
-CTRL-x                   subtract
-CTRL-a                   add (broken)
+`------------------------`
+c_CTRL-r                tricks (command mode) 
+i_CTRL-x                tricks (insert  mode) 
+CTRL-x                  subtract
+CTRL-a                  add (broken)
 
 
 ================================================================================
 SECTION 3 : LaTeX.                                                     *AideLaTeX*
+`------------------------`
 
 |/Users/julienborghetti/.vim/after/ftplugin/tex/tex.vim|  vimscripts pour latex
 |$HOME/.vim/julien/template/latex/template.tex|           template
@@ -125,20 +130,54 @@ SECTION 3 : LaTeX.                                                     *AideLaTe
 ================================================================================
 SECTION 4 : Markdown.                                               *AideMarkdown*
 
+Markdown.pl~
+*,md*                     convert md to html with Markdown.pl (John Gruber)
 
+Pandoc~
+
+Markdown presentation~
+ $mdm ~/.vim/tools/sample_mdp.md 
+
+Markdown preview~
+  >
+ $mdv -m fichier.md
+ $mdv -m fichier.md | less (BUG)
+.
+	*Error	mdv -m fichier.md | less
 
 
 ================================================================================
 SECTION 5 : Divers.                                                   *AideDivers*
-   vim --startuptime vim.log
-   https://devhints.io/vim-help  Cheatsheet help file syntax
+
+vim --startuptime vim.log
+https://devhints.io/vim-help  Cheatsheet help file syntax
 
 
---------------------------------------------------------------------------------
+================================================================================
+SECTION 6 : Références                                            *AideReferences*
+
+http://vimcasts.org
+https://learnvimscriptthehardway.stevelosh.com
+
+
+
+================================================================================
 DEBUG~
->
- set ft=txt
- set ft=help
 
-vim:tw=78:ts=8:noet:ft=help:norl:ma:ve=all
-                                                   
+	*Todo	liens vers vimhelp sur les fichiers d'aide
+Note : fichier d'aide
+|help-writing|
+|helphelp.txt|
+	*Error	les liens ci-dessus ne marchent pas.
+
+
+Note : snippets 
+	*Todo	something to do
+	*Error	something wrong
+
+Note : scripts à sourcer : >
+ :help help-writing
+ :set ft=txt
+ :set ft=help
+
+vim:tw=78:ts=8:noet:ft=help:ma:ve=all:nolist

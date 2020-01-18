@@ -1,0 +1,54 @@
+*cheatsheet.txt* Cheat sheet
+
+CHEAT SHEET                                                           *cheatsheet*
+Mes outils et mes mappings.
+
+--------------------------------------------------------------------------------
+MAPPINGS~
+*,so*                     source line or selection
+*,l*                      invisible chars toggle
+*,5*                      set cmdheight=5
+*,st*                     signature toggle
+
+--------------------------------------------------------------------------------
+BASICS~
+*K*                       lookup the keyword under the cursor
+CTRL-$                  jump to tag
+CTRL-t                  jump back
+`:e`                      edit
+`:sf`                     search file
+
+--------------------------------------------------------------------------------
+TIPS and TRICKS~
+*!!*                      filter w/ external program
+`:!`                      filter w/ external program
+
+--------------------------------------------------------------------------------
+GIT~
+:G                      Git status
+*-*                       add/remove
+*dd*                      diff  split
+*=*                       diff in line
+:G                      Git commit
+
+--------------------------------------------------------------------------------
+MARKDOWN~
+*,md*                     convert md to html with Markdown.pl (John Gruber)
+
+--------------------------------------------------------------------------------
+LATEX~
+
+
+--------------------------------------------------------------------------------
+AUTRES~
+
+`::::::::::::::::::::::::`
+`________________________`
+`........................`
+`------------------------`
+
+>
+ set ft=txt
+ set ft=help
+<
+vim:set filetype=help textwidth=78 ve=all:
