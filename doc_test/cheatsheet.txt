@@ -10,6 +10,10 @@ MAPPINGS~
 *,5*                      set cmdheight=5
 *,st*                     signature toggle
 
+Notes :
+<Leader> = *,*
+<localLeader> = *_* = <Space>
+
 --------------------------------------------------------------------------------
 BASICS~
 *K*                       lookup the keyword under the cursor
@@ -29,11 +33,13 @@ GIT~
 *-*                       add/remove
 *dd*                      diff  split
 *=*                       diff in line
-:G                      Git commit
+:Gcommit                Git commit
+:Gpush                  Git commit
 
 --------------------------------------------------------------------------------
 MARKDOWN~
-*,md*                     convert md to html with Markdown.pl (John Gruber)
+*_md*                     Markdown.pl to html (John Gruber)
+*_p*                      pandoc to html
 
 --------------------------------------------------------------------------------
 LATEX~

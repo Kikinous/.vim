@@ -122,7 +122,7 @@ function! CompilePandoc() "{{{2
         echom 'DEBUG CompilePandoc() : Dispatch -- START'
 "       Dispatch! pandoc % > output.html
 "       Dispatch! pandoc % -o output.html -s
-"       echom "DEBUG CompilePandoc() -- fichier d'entrée : "              . expand('%')
+        echom "DEBUG CompilePandoc() -- fichier d'entrée : "              . expand('%')
 "       echom "DEBUG CompilePandoc() -- chemin du fichier d'entrée : "    . expand('%:p')
 "       echom "DEBUG CompilePandoc() -- racine du fichier d'entrée : "    . expand('%:r')
 "       echom "DEBUG CompilePandoc() -- extension du fichier d'entrée : " . expand('%:e')
@@ -130,13 +130,13 @@ function! CompilePandoc() "{{{2
 "       ERROR
 "       Dispatch! pandoc % -o %.html -s --mathjax -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
 "       TEST
-        Dispatch! pandoc % -o %.html --toc --standalone --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"       Dispatch! pandoc % -o %.html --toc --standalone --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
 "       ERROR
 "       Dispatch! pandoc % -o %.html -s --latexmathml
 "       SUCCESS
 "       Dispatch! pandoc % -o %.html -s --mathjax
 "       SUCCESS
-"       Dispatch! pandoc % -o %.html -s --mathjax --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
+        Dispatch! pandoc % -o %.html -s --mathjax --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
 "       SUCCESS
 "       Dispatch! pandoc % -o %.html -s --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
 "       SUCCESS
@@ -603,7 +603,7 @@ nnoremap <Leader>rt      :-1r $HOME/.vim/julien/template/latex/template.tex<CR>
 "
 " Markdown
 " nnoremap <Leader>mdf     :%!~/.vim/tools/Markdown.pl --html4tags<CR> | set ro 
-nnoremap <Leader>md      :execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
+" nnoremap <Leader>md      :execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
 
 "}}} "}}}
 " AUTOCMD: Tmux, Focus, Vimrc, Python, Markdown, LaTeX {{{1
@@ -651,7 +651,8 @@ augroup Markdown
   autocmd BufNewFile,BufRead *.md   let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'vim', 'tex']
   autocmd BufEnter *.md iabbr img ![]()
   autocmd BufEnter *.md iabbr lien []()
-  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p :w<CR>:<C-u>call CompilePandoc()<CR>
+  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p    :w<CR>:<C-u>call CompilePandoc()<CR>
+  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>md   :w<CR>:execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
 " autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>m :!make<CR>
 " autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>p :!pandoc -f %:p -t html5 -o %:p.html && open %.html <CR>
 " autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>p :!pandoc % -f markdown -t html5 -s --toc --template github.html5 > /tmp/index.md.html && open /tmp/index.md.html && rm /tmp/index.md.html <CR>
