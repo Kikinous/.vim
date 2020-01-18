@@ -92,7 +92,7 @@ set shiftwidth=4                                 " largeur d'espace à ajouter e
 set tabstop=4                                    " largueur d'une tabulation en espaces
 set t_BE=                                        " hack : evite caractères bizarres lors de copier-coller
 set textwidth=0                                  " insère un retour à la ligne
-" set virtualedit=all                            " cursor goes everywhere
+set virtualedit=""                               " cursor can be positioned where there is no actual character  (default "") {"", block, insert, all, onemore} 
 " Lorem {{{
 iabbr lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 "}}}
@@ -592,12 +592,19 @@ nnoremap <Leader>ev      :e ~/.vim/vimrc<CR>
 nnoremap <Leader>ez      :e ~/.zshrc<Esc>
 nnoremap <Leader>el      :e ~/.vim/after/ftplugin/tex/tex.vim<Esc>
 nnoremap <Leader>es      :e ~/.vim/spell/fr.utf-8.add<Esc>
+"
 " Wiki
 nnoremap <Leader>wp      :e ~/Documents/wiki/Index.md<CR>
 nnoremap <Leader>ww      :e ~/Documents/EN/cours/admin/wiki/Index.md<CR>
 nnoremap <Leader>wf      :put =expand('%:p')<CR>
+"
 " LaTeX
 nnoremap <Leader>rt      :-1r $HOME/.vim/julien/template/latex/template.tex<CR>
+"
+" Markdown
+" nnoremap <Leader>mdf     :%!~/.vim/tools/Markdown.pl --html4tags<CR> | set ro 
+nnoremap <Leader>md      :execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
+
 "}}} "}}}
 " AUTOCMD: Tmux, Focus, Vimrc, Python, Markdown, LaTeX {{{1
 " Tmux: {{{2
@@ -777,7 +784,7 @@ let g:SignatureMap = {
     \ 'ListBufferMarks'    :  "m/",
     \ 'ListBufferMarkers'  :  "m?"
     \ }
-" }}} "}}}
+" }}} 
 " Plugin: startscreen  {{{3
 function! T()
     set ft=help
@@ -794,7 +801,7 @@ function! T()
     :1
 endfun
 let g:Startscreen_function = function('T')
-"}}}
+"}}}   "}}}
 " OPTIONAL_PLUGINS: {{{2
 " $HOME/.vim/pack/lesplugins/opt
 " gruvbox
