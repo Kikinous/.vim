@@ -4,3 +4,6 @@
 [submodule "pack/lesplugins/start/startscreen"]
 	path = pack/lesplugins/start/startscreen
 	url = https://github.com/arp242/startscreen.vim.git
+[submodule "pack/lesplugins/start/goyo"]
+	path = pack/lesplugins/start/goyo
+	url = https://github.com/junegunn/goyo.vim.git
