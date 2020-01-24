@@ -15,17 +15,62 @@ Notes :
 <localLeader> = *_* = <Space>
 
 --------------------------------------------------------------------------------
-BASICS~
-*K*                       lookup the keyword under the cursor
-CTRL-$                  jump to tag
-CTRL-t                  jump back
+NAVIGATING~
 `:e`                      edit
 `:sf`                     search file
+:ol                     old file (list)
+:bro ol                 browse old files
+CTRL-$                  jump to tag
+CTRL-t                  jump back
+*K*                       vimhelp of keyword under the cursor
+
+
+--------------------------------------------------------------------------------
+EDITING~
+:ce                     center lines
+:ri                     right-align
+:le                     left-align
+gqq                     format the current line
+gq{motion}              format the {motion}
+{visual}gq              format the {visuql}
+{visual}!par            par (paragraph reformatter : http://www.nicemice.net/par/)
+
+--------------------------------------------------------------------------------
+MY FUNCTIONS~
+AligneDroite()
+CompilePandoc()
+MonFoldText()
+EffaceMapping()
+Modele()
+
+--------------------------------------------------------------------------------
+PLUGINS~
+
+tabular~
+:Tabularize /,
+:Tabularize /^[^:]*\zs/l1c0
+:Tabularize markdown_liens
 
 --------------------------------------------------------------------------------
 TIPS and TRICKS~
 *!!*                      filter w/ external program
-`:!`                      filter w/ external program
+:!                      run an external program
+:!wc %                  run the external wc on the file (?buffer?)
+:%! sort                filter the buffer with the external sort utility
+:history all -4,-1      list hte contents of all history tables (last 4 entries)
+
+
+--------------------------------------------------------------------------------
+Easter eggs~
+:smile
+:help 42
+:help holy-grail
+:help!
+:help spoon
+:help showmatch         (read the note)
+:Ni!                    (Monty Python and the Holy Grail)
+:help bar
+:help howdoi            |You can't! (yet)|	do dishes using Vim
 
 --------------------------------------------------------------------------------
 GIT~
@@ -44,6 +89,14 @@ MARKDOWN~
 --------------------------------------------------------------------------------
 LATEX~
 
+*_m*                      :term      latexmk -pdf   -pv -latexoption="-shell-escape" %<CR>
+*_l*                      :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error" %<CR>
+*_L*                      :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error" %<CR>
+:Copen
+
+insert mode~
+*_sec*                    \section{} <++> snippet
+*__*                      jump to <++>
 
 --------------------------------------------------------------------------------
 AUTRES~

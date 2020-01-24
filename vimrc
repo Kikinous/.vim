@@ -127,20 +127,39 @@ function! CompilePandoc() "{{{2
 "       echom "DEBUG CompilePandoc() -- racine du fichier d'entrée : "    . expand('%:r')
 "       echom "DEBUG CompilePandoc() -- extension du fichier d'entrée : " . expand('%:e')
 "       echom 'DEBUG CompilePandoc() -- nom du fichier de sortie : '      . expand('%') . ".html"
+"
+"       BUG : soit --mathjax soit --toc
+"       
 "       ERROR
 "       Dispatch! pandoc % -o %.html -s --mathjax -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
 "       TEST
 "       Dispatch! pandoc % -o %.html --toc --standalone --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
 "       ERROR
 "       Dispatch! pandoc % -o %.html -s --latexmathml
-"       SUCCESS
+"       SUCCESS : soit --mathjax soit --toc
 "       Dispatch! pandoc % -o %.html -s --mathjax
-"       SUCCESS
-        Dispatch! pandoc % -o %.html -s --mathjax --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
-"       SUCCESS
-"       Dispatch! pandoc % -o %.html -s --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
-"       SUCCESS
-"       Dispatch! pandoc % -o %.html -s --mathjax --css $HOME/.pandoc/templates/stylesheets/typora/night.css
+"       Dispatch! pandoc % -o %.html -s --mathjax           --template github.html5    --css $HOME/.pandoc/templates/stylesheets/github.css
+"       Dispatch! pandoc % -o %.html -s --mathjax           --template blue-toc.html5  --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"       Dispatch! pandoc % -o %.html -s --mathjax                                      --css $HOME/.pandoc/templates/stylesheets/typora/night.css
+"       TOC top
+"         blog
+"         notes
+"         wiki / Fiches
+"         
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/marked.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/night.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/gothic.css    
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/newsprint.css 
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/whitey.css    
+"       TOC side (mieux en haut)
+        Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template bootstrap-adaptive.html5 --css $HOME/.pandoc/templates/stylesheets/bootstrap-adaptive.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template bootstrap.html5          --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template uikit.html5              --css $HOME/.pandoc/templates/stylesheets/uikit.css
+"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
         Dispatch! open %.html
         echom 'DEBUG CompilePandoc() : Dispatch -- END'
         return
@@ -201,7 +220,6 @@ function! MonFoldText() "{{{2
   return v:folddashes . sub
 endfunction
 " }}}
-command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
 "}}}
 function! EffaceMapping() "{{{2
 " MARCHE PAS ENCORE --> essai de la fonction :mapclear
@@ -440,6 +458,7 @@ vnoremap jk              <esc>
 " source script under cursor
 nnoremap <Leader>so      Y:@"<CR>
 vnoremap <Leader>so      y:@"<CR>
+nnoremap <Leader>wso    :w<CR>:so % <CR>
 
 " cmdheight (default=1)
 nnoremap <Leader>1      :set cmdheight=1<CR>
@@ -463,7 +482,7 @@ nnoremap <Leader><space> :nohlsearch<CR>
 "nnoremap <Leader>n       :NERDTreeToggle<Esc>
 nnoremap <Leader>n       :30vs .<CR>              " use internal netrw plugin [BLOG](https://shapeshed.com/vim-netrw/)
 "nnoremap <Leader>bb ":b#<Esc>                    " obsolète :  CTRL-^ switch to the alternate file
-nnoremap <Leader>bo      :browse oldfile<Esc>
+nnoremap <Leader>bo      :browse oldfile<Esc>     " :bro oldfiles
 
 " [working directory](https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file)
 " - un global current directory
@@ -599,6 +618,8 @@ nnoremap <Leader>ww      :e ~/Documents/EN/cours/admin/wiki/Index.md<CR>
 nnoremap <Leader>wf      :put =expand('%:p')<CR>
 "
 " LaTeX
+" voir $HOME/.vim/ftdetect/tex.vim
+" voir $HOME/.vim/after/ftplugin/tex/tex.vim
 nnoremap <Leader>rt      :-1r $HOME/.vim/julien/template/latex/template.tex<CR>
 "
 " Markdown
@@ -653,6 +674,7 @@ augroup Markdown
   autocmd BufEnter *.md iabbr lien []()
   autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p    :w<CR>:<C-u>call CompilePandoc()<CR>
   autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>md   :w<CR>:execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
+  autocmd BufNewFile,BufRead,BufEnter *.md  inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 " autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>m :!make<CR>
 " autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>p :!pandoc -f %:p -t html5 -o %:p.html && open %.html <CR>
 " autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>p :!pandoc % -f markdown -t html5 -s --toc --template github.html5 > /tmp/index.md.html && open /tmp/index.md.html && rm /tmp/index.md.html <CR>
@@ -809,5 +831,7 @@ let g:Startscreen_function = function('T')
 " grammarous-vim
 " ScrollColor                                    " tester les colorscheme installés
 " }}} " }}}
+
+command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
 
 " vim: foldmethod=marker : foldlevel=1 : modifiable : virtualedit=all

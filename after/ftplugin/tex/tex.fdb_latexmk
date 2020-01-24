@@ -1,9 +1,0 @@
-# Fdb version 3
-["pdflatex"] 1554104696 "tex.vim" "tex.pdf" "tex" 1554104696
-  "/opt/local/etc/texmf/texmf.cnf" 1537188197 31468 9f476924a01903f2868c27f105628efd ""
-  "/opt/local/var/db/texmf/web2c/pdftex/pdflatex.fmt" 1547923916 3601156 19155054f6024d7bcf046e7f8b6425ff ""
-  "tex.aux" 1554104696 8 a94a2480d3289e625eea47cd1b285758 ""
-  "tex.vim" 1554104696 6795 37feeae76f8e738cce305450863e05a0 ""
-  (generated)
-  "tex.pdf"
-  "tex.log"

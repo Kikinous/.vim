@@ -101,9 +101,17 @@ augroup ParametresLaTeX
 " nnoremap <localleader>l      :<C-u>call SaveAndExecutePdfLaTeX()<CR>
 " nnoremap <LocalLeader>t      :w<cr> :Dispatch  latexmk -pdfxe -pv -latexoption="-shell-escape -halt-on-error" %<CR>
   nnoremap <LocalLeader>m      :w<CR> :term      latexmk -pdf   -pv -latexoption="-shell-escape" %<CR>
-  nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error" %<CR>
-  nnoremap <LocalLeader>L      :w<CR> :Dispatch! latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error" %<CR>
-  nnoremap <LocalLeader>Copen  :Copen
+" nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f" %<CR>
+  nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f" %<CR>
+" pour avoir la quickfix window qui marche
+" https://github.com/lervag/vimtex/blob/master/autoload/vimtex/compiler/latexmk.vim
+"
+" https://github.com/tpope/vim-dispatch/issues/41
+" :Dispatch ignores the current 'efm' and tries to find an appropriate one by
+" digging through compiler/*.vim. If you want to set 'efm' yourself, you need
+" to use :Make.
+"
+  nnoremap <LocalLeader>L      :w<CR> :Dispatch! latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error" -file-line-error  %<CR>
   "}}}
   "
   " Templates: {{{1
@@ -125,7 +133,7 @@ augroup ParametresLaTeX
 "  problèmes lors de la frappe
 "   iabbrev remarque        \begin{remarque}[]<CR><CR>\end{remarque}
 
-  "
+  " NORMAL MODE
    nnoremap <LocalLeader>es           :e     $HOME/.vim/julien/snippets/latex<CR>
    nnoremap <LocalLeader>sapp         :-1read $HOME/.vim/julien/snippets/latex/appendix.snip<CR>f{
    nnoremap <LocalLeader>sacti        :-1read $HOME/.vim/julien/snippets/latex/activite.snip<CR>f:
@@ -137,6 +145,16 @@ augroup ParametresLaTeX
    nnoremap <LocalLeader>sec          :-1read $HOME/.vim/julien/snippets/latex/section.snip<CR>f{
    nnoremap <LocalLeader>stable       :-1read $HOME/.vim/julien/snippets/latex/table.snip<CR>
    nnoremap <LocalLeader>stemplate    :-1read $HOME/.vim/julien/template/latex/template.tex<CR>
+
+   " INSERT MODE
+   " <++> inspired by https://www.youtube.com/watch?v=Q4I_Ft-VLAg
+   inoremap <Space><Space> <Esc>/<++><CR>"_c4l
+   autocmd FileType tex inoremap  <LocalLeader>sec      \section{}<CR><++><Esc>kf{a
+
+"  autocmd FileType tex inoremap  <LocalLeader>sec      \section{}<Esc>hi
+
+
+
   "}}}
 augroup END
 
