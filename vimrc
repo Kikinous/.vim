@@ -482,7 +482,7 @@ nnoremap <Leader><space> :nohlsearch<CR>
 "nnoremap <Leader>n       :NERDTreeToggle<Esc>
 nnoremap <Leader>n       :30vs .<CR>              " use internal netrw plugin [BLOG](https://shapeshed.com/vim-netrw/)
 "nnoremap <Leader>bb ":b#<Esc>                    " obsolète :  CTRL-^ switch to the alternate file
-nnoremap <Leader>bo      :browse oldfile<Esc>     " :bro oldfiles
+nnoremap <Leader>bo      :browse oldfile<CR>     " :bro oldfiles
 
 " [working directory](https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file)
 " - un global current directory
@@ -670,8 +670,11 @@ augroup Markdown
   autocmd!
   autocmd BufEnter,InsertLeave *.md match DeuxEspacesEnFin  /\s\+$/                                 " montre   les Trailing Whitespaces
   autocmd BufNewFile,BufRead *.md   let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'vim', 'tex']
-  autocmd BufEnter *.md iabbr img ![]()
-  autocmd BufEnter *.md iabbr lien []()
+  autocmd BufEnter *.md inoremap <Space><Space> <Esc>/<++><CR>"_c4l                                                     " cursor jump to next <++>
+  autocmd BufEnter *.md nnoremap <Space><Space>      /<++><CR>"_c4l
+  autocmd BufEnter *.md iabbr img ![](<++>)
+  autocmd BufEnter *.md iabbr lien [](<++>)<esc>?[<CR>
+  autocmd BufEnter *.md iabbr lienk [][<++>]<CR>[<++>]: http://<Esc>
   autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p    :w<CR>:<C-u>call CompilePandoc()<CR>
   autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>md   :w<CR>:execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
   autocmd BufNewFile,BufRead,BufEnter *.md  inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
