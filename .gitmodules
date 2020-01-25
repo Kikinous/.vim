@@ -7,3 +7,6 @@
 [submodule "pack/lesplugins/start/goyo"]
 	path = pack/lesplugins/start/goyo
 	url = https://github.com/junegunn/goyo.vim.git
+[submodule "pack/lesplugins/start/tocdown"]
+	path = pack/lesplugins/start/tocdown
+	url = https://github.com/wikimatze/tocdown.git

@@ -85,6 +85,7 @@ GIT~
 MARKDOWN~
 *_md*                     Markdown.pl to html (John Gruber)
 *_p*                      pandoc to html
+:TocdownToggle          TOC in a split (doesnt work great)
 
 --------------------------------------------------------------------------------
 LATEX~
