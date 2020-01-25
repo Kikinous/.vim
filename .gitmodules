@@ -7,6 +7,3 @@
 [submodule "pack/lesplugins/start/goyo"]
 	path = pack/lesplugins/start/goyo
 	url = https://github.com/junegunn/goyo.vim.git
-[submodule "pack/lesplugins/start/VOoM"]
-	path = pack/lesplugins/start/VOoM
-	url = https://github.com/vim-voom/VOoM.git
