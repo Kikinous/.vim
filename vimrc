@@ -57,6 +57,7 @@ set showbreak=↪
 " Fonctionalites: {{{2
 set undofile
 set mouse=a                                      " pour que la souris marche
+set clipboard=unnamed                            " Vim yank to the clipboard, to be pasted anywhere. (OS register is "* by defaut, now default register "") 
 if has("mouse_sgr")                              " redimensionne split dans tmux
     set ttymouse=sgr                             "
 else                                             "
@@ -476,6 +477,10 @@ nnoremap <Leader>ht     :helptags ALL<CR> " faire un diff on every window nnorem
 
 " stop surlignage
 nnoremap <Leader><space> :nohlsearch<CR>
+
+"scroll
+noremap <C-j> 10jzz
+noremap <C-k> 10kzz
 
 " Browsing
 "    map  CTRL-P         fzf pluging
