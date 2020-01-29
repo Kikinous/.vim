@@ -16,7 +16,7 @@
 :w
 :0r!cowsay -f surgery    Pardon, depuis le 31 dec, j ai un nerf pince dans les cervicalles. Deux fois aux urgences.
 :0r!cowsay -f head-in    je crois que j ai ete clair cette fois
-:0r!cowsay -f telebears  pas trop reactif.
+:0r!cowsay -f telebears  C est super.
 :0r!cowsay mon cher matthieu, bonne annee a toi aussi, et vous aussi
 
 :w

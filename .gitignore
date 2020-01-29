@@ -30,9 +30,8 @@ latex/**/*.pdf
 # fichiet .netrwhist  du plugin interne netrw
 .netrwhist
 
-# Répertoire ftdetect
-#/ftdetect/*
-#!/ftdetect/tex.vim
+# Video de Derk Wyatt sur une conversion xml->txt en mode commande
+doc_test/Derek_Wyatt-Globals_Command_Line_and_Functions.mp4
 
 
 
