@@ -8,7 +8,7 @@
                 / ____ \| | (_| |  __/  | |  |  __/ |  \__ \ (_) | ~
                /_/    \_\_|\__,_|\___|  |_|   \___|_|  |___/\___/  ~
                                                                   
-                  My problem with vim is that I don't grok vi
+                  My problem with vim is that I don't grok vi [|1|]
                               La 'doc' de ma config.
 
 
@@ -25,7 +25,7 @@ But: >
   2.3. Edition ........................ |AideEdition|
   2.4. Programmation .................. |AideProgrammation|
   2.5. Prise de notes.................. |AideNotes|
-  2.6. Divers ......................... |AideDivers|
+  2.6. Autres ......................... |AideAutres|
 3. LaTeX .............................. |AideLaTeX|
 4. Markdown ........................... |AideMarkdown|
 5. Divers ............................. |AideDivers|
@@ -97,7 +97,9 @@ CTRL-t                  jump back
 `------------------------`
 :w !sudo tee %          sauvegarde avec les droits admins
 !!                      write command stdout in buffer
-
+:s/foo/bar/gc           substiture globally (line) and confirm
+:g/foo/dd               execute dd on line with pattern foo
+:!/foo/dd              execute dd on line without pattern foo
 
 --------------------------------------------------------------------------------
 2.4 Programmation                                              *AideProgrammation*
@@ -121,7 +123,7 @@ CTRL-i                  in  (back in)
 
 
 --------------------------------------------------------------------------------
-2.6 Divers                                                            *AideDivers*
+2.6 Autres                                                            *AideAutres*
 `------------------------`
 c_CTRL-r                tricks (command mode) 
 i_CTRL-x                tricks (insert  mode) 
@@ -177,9 +179,16 @@ https://devhints.io/vim-help  Cheatsheet help file syntax
 ================================================================================
 SECTION 6 : Références                                            *AideReferences*
 
-http://vimcasts.org
-https://learnvimscriptthehardway.stevelosh.com
-https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118
+[ *1* ] *Stackoverflow* Your problem with wim is that you don't grok vi
+      https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118
+[ *2* ] *Drew_Neil* Vim - precision editing at the speed of thought
+      https://vimeo.com/53144573
+[ *3* ] *Drew_Neil* Learn essential Vim skills
+      http://vimcasts.org
+[ *4* ] *Steve_Losh* Learn Vimscript the Hard Way
+      https://learnvimscriptthehardway.stevelosh.com
+[ *5* ] official wabsite
+      https://www.vim.org
 
 
 ================================================================================

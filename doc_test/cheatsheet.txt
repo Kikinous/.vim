@@ -23,6 +23,7 @@ NAVIGATING~
 CTRL-$                  jump to tag
 CTRL-t                  jump back
 *K*                       vimhelp of keyword under the cursor
+*gE*                      end prior WORD
 
 
 --------------------------------------------------------------------------------
@@ -34,6 +35,8 @@ gqq                     format the current line
 gq{motion}              format the {motion}
 {visual}gq              format the {visuql}
 {visual}!par            par (paragraph reformatter : http://www.nicemice.net/par/)
+gU                      Uppercase letter
+gu                      Lowercase letter
 
 --------------------------------------------------------------------------------
 MY FUNCTIONS~
