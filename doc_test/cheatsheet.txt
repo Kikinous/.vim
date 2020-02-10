@@ -24,7 +24,8 @@ CTRL-$                  jump to tag
 CTRL-t                  jump back
 *K*                       vimhelp of keyword under the cursor
 *gE*                      end prior WORD
-
+CTRL-I                  jump in of the jump list
+CTRL-O                  jump out of the jump list
 
 --------------------------------------------------------------------------------
 EDITING~
@@ -37,6 +38,9 @@ gq{motion}              format the {motion}
 {visual}!par            par (paragraph reformatter : http://www.nicemice.net/par/)
 gU                      Uppercase letter
 gu                      Lowercase letter
+
+:put =expand('%')     write file name in buffer (%:p -> full path) 
+
 
 --------------------------------------------------------------------------------
 MY FUNCTIONS~

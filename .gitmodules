@@ -10,3 +10,6 @@
 [submodule "pack/lesplugins/start/tocdown"]
 	path = pack/lesplugins/start/tocdown
 	url = https://github.com/wikimatze/tocdown.git
+[submodule "pack/lesplugins/start/undotree"]
+	path = pack/lesplugins/start/undotree
+	url = https://github.com/mbbill/undotree.git

@@ -1,3 +1,4 @@
+" https://github.com/thoughtbot/dotfiles/blob/master/vimrc
 " DOC:{{{1
 " Versions: {{{2
 " V1.1
@@ -121,20 +122,21 @@ function! CompilePandoc() "{{{2
     if exists("g:loaded_dispatch")
 "       DEBUG START:
         echom 'DEBUG CompilePandoc() : Dispatch -- START'
-"       Dispatch! pandoc % > output.html
-"       Dispatch! pandoc % -o output.html -s
         echom "DEBUG CompilePandoc() -- fichier d'entrée : "              . expand('%')
 "       echom "DEBUG CompilePandoc() -- chemin du fichier d'entrée : "    . expand('%:p')
 "       echom "DEBUG CompilePandoc() -- racine du fichier d'entrée : "    . expand('%:r')
 "       echom "DEBUG CompilePandoc() -- extension du fichier d'entrée : " . expand('%:e')
 "       echom 'DEBUG CompilePandoc() -- nom du fichier de sortie : '      . expand('%') . ".html"
 "
+"       TEST(s)
+"       Dispatch! pandoc % > output.html
+"       Dispatch! pandoc % -o output.html -s
+"       Dispatch! pandoc % -o %.html --toc --standalone --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"
 "       BUG : soit --mathjax soit --toc
-"       
+"
 "       ERROR
 "       Dispatch! pandoc % -o %.html -s --mathjax -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
-"       TEST
-"       Dispatch! pandoc % -o %.html --toc --standalone --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
 "       ERROR
 "       Dispatch! pandoc % -o %.html -s --latexmathml
 "       SUCCESS : soit --mathjax soit --toc
@@ -146,7 +148,7 @@ function! CompilePandoc() "{{{2
 "         blog
 "         notes
 "         wiki / Fiches
-"         
+"
 "       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
 "       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
 "       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3
@@ -476,6 +478,7 @@ nnoremap <Leader>sc     :packadd ScrollColor<CR>:SCROLLCOLOR<CR>
 nnoremap <Leader>ht     :helptags ALL<CR> " faire un diff on every window nnoremap <Leader>diff   :windo difft<CR> " fugitive " [MANUEL](https://git-scm.com/book/en/v2) "nnoremap <Leader>gr    :!git reset --hard HEAD                             " reset repertoire de travail to last commit "}}}
 " Navigating:{{{2
 
+
 " stop surlignage
 nnoremap <Leader><space> :nohlsearch<CR>
 
@@ -489,6 +492,9 @@ noremap <C-k> 10kzz
 nnoremap <Leader>n       :30vs .<CR>              " use internal netrw plugin [BLOG](https://shapeshed.com/vim-netrw/)
 "nnoremap <Leader>bb ":b#<Esc>                    " obsolète :  CTRL-^ switch to the alternate file
 nnoremap <Leader>bo      :browse oldfile<CR>     " :bro oldfiles
+"
+" aliad to ~/.vim
+cabbrev cdv             cd ~/.vim
 
 " [working directory](https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file)
 " - un global current directory
@@ -834,7 +840,7 @@ function! T()
     
     " open ntrw file browser
     :Vexplore
-    :normal <C-w> l
+"   :normal <C-w> l
 endfun
 let g:Startscreen_function = function('T')
 "}}}   "}}}

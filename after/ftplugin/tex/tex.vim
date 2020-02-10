@@ -126,6 +126,7 @@ augroup ParametresLaTeX
   " Snippets:{{{1
   " =========
    iabbrev includegraphics \includegraphics[width=\textwidth]{.png}
+   iabbrev graph           \includegraphics[width=\textwidth]{.png}
    iabbrev minipage        \begin{minipage}[t]{0.5\linewidth} \vspace{0mm}<CR>\end{minipage}
    iabbrev definition      \begin{definition}[]<CR><CR>\end{definition}
    iabbrev exemple         \begin{exemple}[]<CR><CR>\end{exemple}
