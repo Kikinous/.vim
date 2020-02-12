@@ -13,3 +13,9 @@
 [submodule "pack/lesplugins/start/undotree"]
 	path = pack/lesplugins/start/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "pack/lesplugins/vim-markdown-toc"]
+	path = pack/lesplugins/vim-markdown-toc
+	url = https://github.com/mzlogin/vim-markdown-toc.git
+[submodule "pack/lesplugins/opt/vim-markdown-toc"]
+	path = pack/lesplugins/opt/vim-markdown-toc
+	url = https://github.com/mzlogin/vim-markdown-toc.git
