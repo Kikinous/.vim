@@ -19,3 +19,6 @@
 [submodule "pack/lesplugins/opt/vim-markdown-toc"]
 	path = pack/lesplugins/opt/vim-markdown-toc
 	url = https://github.com/mzlogin/vim-markdown-toc.git
+[submodule "pack/lesplugins/opt/markdown-preview.nvim"]
+	path = pack/lesplugins/opt/markdown-preview.nvim
+	url = https://github.com/iamcco/markdown-preview.nvim.git

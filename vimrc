@@ -513,12 +513,12 @@ nnoremap <Leader>lcd     :lcd %:p:h<Esc>          " set working directory de la 
 nnoremap <Leader>ml      :marks<CR>
 nnoremap <Leader>md      :delmarks a-z<CR>      " minuscule : single file
 nnoremap <Leader>mD      :delmarks A-Z<CR>      " majuscule : global
-if exists(":SignatureToggleSigns")              " plugin: vim-signature
+"if exists(":SignatureToggleSigns")              " plugin: vim-signature
   nnoremap <Leader>st      :SignatureToggleSigns<Esc>
   nnoremap <Leader>sr      :SignatureRefresh<Esc>
   nnoremap <Leader>sl      :SignatureListBufferMarks<Esc>
   nnoremap <Leader>sL      :SignatureListGlobalMarks<Esc>
-endif
+"endif
 "}}}
 " Editing:{{{2
 
@@ -680,13 +680,14 @@ augroup END
 highlight DeuxEspacesEnFin ctermbg=darkblue guibg=darkBlue
 augroup Markdown
   autocmd!
-  autocmd BufEnter,InsertLeave *.md match DeuxEspacesEnFin  /\s\+$/                                 " montre   les Trailing Whitespaces
-  autocmd BufNewFile,BufRead *.md   let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'vim', 'tex']
-  autocmd BufEnter *.md inoremap <Space><Space> <Esc>/<++><CR>"_c4l                                                     " cursor jump to next <++>
-  autocmd BufEnter *.md nnoremap <Space><Space>      /<++><CR>"_c4l
-  autocmd BufEnter *.md iabbr img ![](<++>)
-  autocmd BufEnter *.md iabbr lien [](<++>)<esc>?[<CR>
-  autocmd BufEnter *.md iabbr lienk [][<++>]<CR>[<++>]: http://<Esc>
+  autocmd BufEnter,InsertLeave *.md         match DeuxEspacesEnFin  /\s\+$/                                 " montre   les Trailing Whitespaces
+  autocmd BufNewFile,BufRead *.md           let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'vim', 'tex']
+  autocmd BufEnter *.md                     inoremap <Space><Space> <Esc>/<++><CR>"_c4l                                                     " cursor jump to next <++>
+  autocmd BufEnter *.md                     nnoremap <Space><Space>      /<++><CR>"_c4l
+  autocmd BufEnter *.md                     :packadd vim-markdown-toc<CR>
+  autocmd BufEnter *.md                     iabbr img ![](<++>)
+  autocmd BufEnter *.md                     iabbr lien [](<++>)<esc>?[<CR>
+  autocmd BufEnter *.md                     iabbr lienk [][<++>]<CR>[<++>]: http://<Esc>
   autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p    :w<CR>:<C-u>call CompilePandoc()<CR>
   autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>md   :w<CR>:execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
   autocmd BufNewFile,BufRead,BufEnter *.md  inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
