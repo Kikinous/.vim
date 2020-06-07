@@ -120,13 +120,13 @@ augroup ParametresLaTeX
    nnoremap <LocalLeader>ep    :e $HOME/Library/texmf/tex/latex/<Esc>
    nnoremap <LocalLeader>eg    :e $HOME/Documents/EN/cours/LaTeX/gallerie/gallerie.tex<Esc>
    nnoremap <LocalLeader>et    :e $HOME/.vim/julien/template/latex/template.tex<Esc>
-   nnoremap <LocalLeader>rt    :r $HOME/.vim/julien/template/latex/template.tex<Esc>
+   nnoremap <LocalLeader>rt    :-1r $HOME/.vim/julien/template/latex/template.tex<Esc>
   "}}}
   "
   " Snippets:{{{1
   " =========
-   iabbrev includegraphics \includegraphics[width=\textwidth]{.png}
-   iabbrev graph           \includegraphics[width=\textwidth]{.png}
+   iabbrev includegraphics \includegraphics[width=\linewidth]{.png}
+   iabbrev graph           \includegraphics[width=\linewidth]{.png}
    iabbrev minipage        \begin{minipage}[t]{0.5\linewidth} \vspace{0mm}<CR>\end{minipage}
    iabbrev definition      \begin{definition}[]<CR><CR>\end{definition}
    iabbrev exemple         \begin{exemple}[]<CR><CR>\end{exemple}

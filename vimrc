@@ -118,71 +118,83 @@ function! AlignDroite() "{{{2
 endfunction
 nnoremap <Leader>ad  :call AlignDroite()<CR>
 " }}}
-function! CompilePandoc() "{{{2
+function! CompilePandoc(format) "{{{2
+    let l:debug = "no"
     if exists("g:loaded_dispatch")
-"       DEBUG START:
-        echom 'DEBUG CompilePandoc() : Dispatch -- START'
-        echom "DEBUG CompilePandoc() -- fichier d'entrée : "              . expand('%')
-"       echom "DEBUG CompilePandoc() -- chemin du fichier d'entrée : "    . expand('%:p')
-"       echom "DEBUG CompilePandoc() -- racine du fichier d'entrée : "    . expand('%:r')
-"       echom "DEBUG CompilePandoc() -- extension du fichier d'entrée : " . expand('%:e')
-"       echom 'DEBUG CompilePandoc() -- nom du fichier de sortie : '      . expand('%') . ".html"
+        if l:debug == "yes"
+"           DEBUG {{{3
+            echom 'DEBUG CompilePandoc() : Dispatch -- START'
+            echom "DEBUG CompilePandoc() -- fichier d'entrée : "              . expand('%')
+"           echom "DEBUG CompilePandoc() -- chemin du fichier d'entrée : "    . expand('%:p')
+"           echom "DEBUG CompilePandoc() -- racine du fichier d'entrée : "    . expand('%:r')
+"           echom "DEBUG CompilePandoc() -- extension du fichier d'entrée : " . expand('%:e')
+"           echom 'DEBUG CompilePandoc() -- nom du fichier de sortie : '      . expand('%') . ".html"
+"           Dispatch! pandoc % > output.html
+"           Dispatch! pandoc % -o output.html -s
+"           Dispatch! pandoc % -o %.html --toc --standalone --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
 "
-"       TEST(s)
-"       Dispatch! pandoc % > output.html
-"       Dispatch! pandoc % -o output.html -s
-"       Dispatch! pandoc % -o %.html --toc --standalone --mathjax --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"           BUG : soit --mathjax soit --toc
 "
-"       BUG : soit --mathjax soit --toc
-"
-"       ERROR
-"       Dispatch! pandoc % -o %.html -s --mathjax -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
-"       ERROR
-"       Dispatch! pandoc % -o %.html -s --latexmathml
-"       SUCCESS : soit --mathjax soit --toc
-"       Dispatch! pandoc % -o %.html -s --mathjax
-"       Dispatch! pandoc % -o %.html -s --mathjax           --template github.html5    --css $HOME/.pandoc/templates/stylesheets/github.css
-"       Dispatch! pandoc % -o %.html -s --mathjax           --template blue-toc.html5  --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
-"       Dispatch! pandoc % -o %.html -s --mathjax                                      --css $HOME/.pandoc/templates/stylesheets/typora/night.css
-"       TOC top
-"         blog
-"         notes
-"         wiki / Fiches
-"
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/marked.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/night.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/gothic.css    
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/newsprint.css 
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/whitey.css    
-"       TOC side (mieux en haut)
-        Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template bootstrap-adaptive.html5 --css $HOME/.pandoc/templates/stylesheets/bootstrap-adaptive.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template bootstrap.html5          --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template uikit.html5              --css $HOME/.pandoc/templates/stylesheets/uikit.css
-"       Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
-        Dispatch! open %.html
-        echom 'DEBUG CompilePandoc() : Dispatch -- END'
-        return
-"       DEBUG END:
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 2 --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template uikit.html5              --css $HOME/.pandoc/templates/stylesheets/uikit.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template bootstrap-adaptive.html5 --css $HOME/.pandoc/templates/stylesheets/bootstrap-adaptive.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template bootstrap.html5          --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github-v1.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/typora/github.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/marked.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/night.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/gothic.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/newsprint.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/pixyll.css
-"       Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/whitey.css
-"       Dispatch! open %:r.html
+"           ERROR
+"           Dispatch! pandoc % -o %.html -s --mathjax -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
+"           ERROR
+"           Dispatch! pandoc % -o %.html -s --latexmathml
+"           SUCCESS : soit --mathjax soit --toc
+"           Dispatch! pandoc % -o %.html -s --mathjax
+"           Dispatch! pandoc % -o %.html -s --mathjax           --template github.html5    --css $HOME/.pandoc/templates/stylesheets/github.css
+"           Dispatch! pandoc % -o %.html -s --mathjax           --template blue-toc.html5  --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"           Dispatch! pandoc % -o %.html -s --mathjax                                      --css $HOME/.pandoc/templates/stylesheets/typora/night.css
+"           TOC top
+"             blog
+"             notes
+"             wiki / Fiches
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/marked.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/night.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/gothic.css    
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/newsprint.css 
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/typora/whitey.css    
+"           TOC side (mieux en haut)
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"           Dispatch! pandoc % -o %.html -s                                                         --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template bootstrap-adaptive.html5 --css $HOME/.pandoc/templates/stylesheets/bootstrap-adaptive.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template bootstrap.html5          --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template uikit.html5              --css $HOME/.pandoc/templates/stylesheets/uikit.css
+"           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
+"           Dispatch! open %:r.html
+"           Dispatch! open %.html
+"           return
+"           }}} 
+        else
+            if a:format == "html"
+"               pandoc -o %:r.html {{{3 
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 2 --template blue-toc.html5           --css $HOME/.pandoc/templates/stylesheets/blue-toc.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template uikit.html5              --css $HOME/.pandoc/templates/stylesheets/uikit.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template bootstrap-adaptive.html5 --css $HOME/.pandoc/templates/stylesheets/bootstrap-adaptive.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template bootstrap.html5          --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github-v1.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/github.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --template github.html5             --css $HOME/.pandoc/templates/stylesheets/typora/github.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/marked.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/night.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/gothic.css
+                Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/newsprint.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/pixyll.css
+"               Dispatch! pandoc % -o %:r.html -t html5 -f markdown -s --latexmathml -toc --toc-depth 3 --css $HOME/.pandoc/templates/stylesheets/typora/whitey.css
+                Dispatch! open %.html
+"               }}} 
+            elseif a:format == "pdf"
+"               pandoc -o %:r.pdf {{{3 
+                Dispatch! pandoc % -o %:r.pdf --from markdown --template eisvogel --listings
+                Dispatch! open %:r.pdf
+"               }}} 
+            endif
+        endif
     else
+"       pandoc par makeprg {{{3
         echom 'DEBUG CompilePandoc() : makeprg -- START'
         set makeprg=pandoc\ %:r.md\ --from\ markdown\ --to\ html5\ -s\ -o\ %:r.html
         set makeprg+=\ --toc\ --toc-depth\ 3\ --latexmathml
@@ -204,18 +216,9 @@ function! CompilePandoc() "{{{2
         echom "SUCESS : fonction CompilePandoc() par make interne à VIM terminé"
         echom "       : utilisation de copen"
         copen
+"       }}}
     endif
-    """"""""""""""""""""""
-    " Autre méthode      "
-    """"""""""""""""""""""
-"   let l:commande = "pandoc\\ %:r.md\\ --from\\ markdown\\ --to\\ html5\\ -s\\ -o\\ %:r.html"
-"   let l:commande = l:commande . "\\ --toc\\ --toc-depth\\ 2"
-"   execute "set makeprg=" . l:commande
-"   make!
-"   !open %:r.html
-"   copen
 endfunction
-
 "}}}
 function! MonFoldText() "{{{2
   let line = getline(v:foldstart)
@@ -552,6 +555,7 @@ nnoremap <Leader>gq      gqap
 " Tabularize                                    " :help Tabular.txt
 if exists(":Tabularize")                        " plugin : tabular
   noremap <Leader>t,     :Tabularize /,<CR>
+  noremap <Leader>t&     :Tabularize /&<CR>
   noremap <Leader>t=     :Tabularize /=<CR>
   noremap <Leader>t<Bar> :Tabularize /<Bar><CR>
   noremap <Leader>t:     :Tabularize /:<CR>              " (defaults on) :Tabularize /:/l1<CR> je crois
@@ -688,7 +692,8 @@ augroup Markdown
   autocmd BufEnter *.md                     iabbr img ![](<++>)
   autocmd BufEnter *.md                     iabbr lien [](<++>)<esc>?[<CR>
   autocmd BufEnter *.md                     iabbr lienk [][<++>]<CR>[<++>]: http://<Esc>
-  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p    :w<CR>:<C-u>call CompilePandoc()<CR>
+  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p    :w<CR>:<C-u>call CompilePandoc("pdf")<CR>
+  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>P    :w<CR>:<C-u>call CompilePandoc("html")<CR>
   autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>md   :w<CR>:execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
   autocmd BufNewFile,BufRead,BufEnter *.md  inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 " autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>m :!make<CR>
@@ -697,6 +702,7 @@ augroup Markdown
 augroup END
 "}}}
 " LaTeX: {{{2
+" <leader> el
 " voir $HOME/.vim/ftdetect/tex.vim
 " voir $HOME/.vim/after/ftplugin/tex/tex.vim
 " Pas sûr que tout ça marche bien !
