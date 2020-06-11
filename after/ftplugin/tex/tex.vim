@@ -102,7 +102,7 @@ augroup ParametresLaTeX
 " nnoremap <LocalLeader>t      :w<cr> :Dispatch  latexmk -pdfxe -pv -latexoption="-shell-escape -halt-on-error" %<CR>
   nnoremap <LocalLeader>m      :w<CR> :term      latexmk -pdf   -pv -latexoption="-shell-escape" %<CR>
 " nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f" %<CR>
-  nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f" %<CR>
+  nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f " %<CR>
 " pour avoir la quickfix window qui marche
 " https://github.com/lervag/vimtex/blob/master/autoload/vimtex/compiler/latexmk.vim
 "
@@ -123,7 +123,7 @@ augroup ParametresLaTeX
    nnoremap <LocalLeader>rt    :-1r $HOME/.vim/julien/template/latex/template.tex<Esc>
   "}}}
   "
-  " Snippets:{{{1
+  " Abbrev:{{{1
   " =========
    iabbrev includegraphics \includegraphics[width=\linewidth]{.png}
    iabbrev graph           \includegraphics[width=\linewidth]{.png}
@@ -133,7 +133,9 @@ augroup ParametresLaTeX
    iabbrev propriete       \begin{propriete}[]<CR><CR>\end{propriete}
 "  problèmes lors de la frappe
 "   iabbrev remarque        \begin{remarque}[]<CR><CR>\end{remarque}
-
+  "}}}
+  " Snippets:{{{1
+  " =========
   " NORMAL MODE
    nnoremap <LocalLeader>es           :e     $HOME/.vim/julien/snippets/latex<CR>
    nnoremap <LocalLeader>sapp         :-1read $HOME/.vim/julien/snippets/latex/appendix.snip<CR>f{

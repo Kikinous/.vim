@@ -627,6 +627,7 @@ nnoremap <Leader>ev      :e ~/.vim/vimrc<CR>
 nnoremap <Leader>ez      :e ~/.zshrc<Esc>
 nnoremap <Leader>el      :e ~/.vim/after/ftplugin/tex/tex.vim<Esc>
 nnoremap <Leader>es      :e ~/.vim/spell/fr.utf-8.add<Esc>
+nnoremap <Leader>ej      :e $HOME/Library/texmf/tex/latex/julien04.sty<Esc>
 "
 " Wiki
 nnoremap <Leader>wp      :e ~/Documents/wiki/Index.md<CR>
@@ -716,7 +717,6 @@ augroup END
 "}}} "}}}
 " PLUGINS: {{{1
 " DOC: {{{2
-" [TUTO submodules](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/)
 " :scriptnames
 " :helptags ALL
 " vim --startuptime file.log
@@ -853,8 +853,10 @@ let g:Startscreen_function = function('T')
 "}}}   "}}}
 " OPTIONAL_PLUGINS: {{{2
 " $HOME/.vim/pack/lesplugins/opt
+" [TUTO submodules](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/)
 " gruvbox
 " grammarous-vim
+" vim-surround
 " ScrollColor                                    " tester les colorscheme installés
 " }}} " }}}
 
