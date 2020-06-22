@@ -85,6 +85,7 @@ let g:languagetool_jar='$HOME/.vim/julien/LanguageTool/languagetool.jar'
 " ouvre help vsplit à droite
 cnoreabbrev h botright vert h
 set rtp+=/opt/local/share/fzf/vim                "fuzzy file finder Doc: /opt/local/share/doc/fzf
+set modelineexpr                                 " to allow expression in modeline
 "}}}
 " Edition: {{{2
 set encoding=utf8                                " A garder ?
