@@ -25,3 +25,6 @@
 [submodule "pack/lesplugins/opt/vim-surround"]
 	path = pack/lesplugins/opt/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "pack/lesplugins/start/nnn"]
+	path = pack/lesplugins/start/nnn
+	url = https://github.com/mcchrish/nnn.vim
