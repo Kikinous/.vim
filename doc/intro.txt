@@ -1,6 +1,5 @@
 
 
-            :Vexplore
             :help |aide|
             :help |cheatsheet|
 *,ww*         :edit `~/Documents/EN/cours/admin/wiki/Index.md`

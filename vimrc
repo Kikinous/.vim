@@ -854,7 +854,7 @@ function! T()
     :1
     
     " open ntrw file browser
-    :Vexplore
+    ":Vexplore
 "   :normal <C-w> l
 endfun
 let g:Startscreen_function = function('T')
