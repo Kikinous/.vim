@@ -220,6 +220,7 @@ function! CompilePandoc(format) "{{{2
 "       }}}
     endif
 endfunction
+nnoremap  <Leader>m      :execute CompilePandoc("pdf")<CR>
 "}}}
 function! MonFoldText() "{{{2
   let line = getline(v:foldstart)
@@ -554,7 +555,7 @@ nnoremap <Leader>gw      gwap
 nnoremap <Leader>gq      gqap
 
 " Tabularize                                    " :help Tabular.txt
-if exists(":Tabularize")                        " plugin : tabular
+"if exists(":Tabularize")                        " plugin : tabular
   noremap <Leader>t,     :Tabularize /,<CR>
   noremap <Leader>t&     :Tabularize /&<CR>
   noremap <Leader>t=     :Tabularize /=<CR>
@@ -620,7 +621,7 @@ if exists(":Tabularize")                        " plugin : tabular
  " -- alignement des | automatique
  " -- tpope
   inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-endif
+"endif
 "}}}
 " Particular_Files:{{{2
 " ConfigFiles
@@ -682,27 +683,6 @@ augroup Python
    autocmd BufWritePre        *.py    :%s/\s\+$//e              " supprime les Trailing Whitespaces
 augroup END
 "}}}
-" Markdown: {{{2
-highlight DeuxEspacesEnFin ctermbg=darkblue guibg=darkBlue
-augroup Markdown
-  autocmd!
-  autocmd BufEnter,InsertLeave *.md         match DeuxEspacesEnFin  /\s\+$/                                 " montre   les Trailing Whitespaces
-  autocmd BufNewFile,BufRead *.md           let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'vim', 'tex']
-  autocmd BufEnter *.md                     inoremap <Space><Space> <Esc>/<++><CR>"_c4l                                                     " cursor jump to next <++>
-  autocmd BufEnter *.md                     nnoremap <Space><Space>      /<++><CR>"_c4l
-  autocmd BufEnter *.md                     :packadd vim-markdown-toc<CR>
-  autocmd BufEnter *.md                     iabbr img ![](<++>)
-  autocmd BufEnter *.md                     iabbr lien [](<++>)<esc>?[<CR>
-  autocmd BufEnter *.md                     iabbr lienk [][<++>]<CR>[<++>]: http://<Esc>
-  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>p    :w<CR>:<C-u>call CompilePandoc("pdf")<CR>
-  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>P    :w<CR>:<C-u>call CompilePandoc("html")<CR>
-  autocmd BufNewFile,BufRead,BufEnter *.md  nnoremap <buffer> <localleader>md   :w<CR>:execute "!~/.vim/tools/Markdown.pl --html4tags % > %.html && open %.html " <CR>
-  autocmd BufNewFile,BufRead,BufEnter *.md  inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-" autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>m :!make<CR>
-" autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>p :!pandoc -f %:p -t html5 -o %:p.html && open %.html <CR>
-" autocmd BufNewFile,BufRead *.md  nnoremap <buffer> <localleader>p :!pandoc % -f markdown -t html5 -s --toc --template github.html5 > /tmp/index.md.html && open /tmp/index.md.html && rm /tmp/index.md.html <CR>
-augroup END
-"}}}
 " LaTeX: {{{2
 " <leader> el
 " voir $HOME/.vim/ftdetect/tex.vim
@@ -757,6 +737,33 @@ let g:netrw_winsize = 25             " 25% de la page
 "augroup END
 " 
 ""}}}
+" Plugin: nnn {{{3
+"
+" 1. CUSTOM MAPPINGS
+" Disable default mappings
+let g:nnn#set_default_mappings = 0
+" Then set your own
+nnoremap <silent> <leader>nn :NnnPicker<CR>
+" Or override
+" Start nnn in the current file's directory
+nnoremap <leader>n :NnnPicker '%:p:h'<CR>
+
+" 2. LAYOUT
+" Opens the nnn window in a split
+"let g:nnn#layout = 'new' " or vnew, tabnew etc.
+" Or pass a dictionary with window size
+"let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+let g:nnn#layout = { 'left': '20%' } " or right, up, down
+" Floating window (neovim latest and vim with patch 8.2.191)
+"let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
+
+" 3. ACTION
+"let g:nnn#action = {
+"      \ '<c-t>': 'tab split',
+"      \ '<c-x>': 'split',
+"      \ '<c-v>': 'vsplit' }
+
+"}}}
 " Plugin: tabular {{{3
 if exists(":Tabularize")
 "   But, now that this command does exactly what we want it to, it's become pretty
@@ -863,4 +870,4 @@ let g:Startscreen_function = function('T')
 
 command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
 
-" vim: foldmethod=marker : foldlevel=1 : modifiable : virtualedit=all
+" vim: foldmethod=marker : foldlevel=1 : modifiable : virtualedit=all : noma

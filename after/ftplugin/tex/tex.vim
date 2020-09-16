@@ -61,7 +61,7 @@ augroup ParametresLaTeX
   "   :ALELint
   "   %chktex 10 , %chktex 6 : Disable some errors
   "   -> $HOME/.vim/pack/lesplugins/opt/ale/ale_linters/tex hack pour le faire marcher }}}
-  execute "packadd ale"
+" execute "packadd ale"
   let b:ale_fixers = ['remove_trailing_lines',  'trim_whitespace']
   let b:ale_linters = ['chktex']
   let g:ale_lint_on_enter = 0                   "
@@ -88,7 +88,7 @@ augroup ParametresLaTeX
 
   " <Localleaderd>lt
   execute "packadd vim-latex"
-" let g:latex_toc_split_side='rightbelow'
+  let g:latex_toc_split_side='rightbelow'
   let g:latex_toc_width=50
 " charge vim help des packages
   silent! helptags ALL
@@ -100,7 +100,7 @@ augroup ParametresLaTeX
   set makeprg=latexmk\ -pv\ -pdf
 " nnoremap <localleader>l      :<C-u>call SaveAndExecutePdfLaTeX()<CR>
 " nnoremap <LocalLeader>t      :w<cr> :Dispatch  latexmk -pdfxe -pv -latexoption="-shell-escape -halt-on-error" %<CR>
-  nnoremap <LocalLeader>m      :w<CR> :term      latexmk -pdf   -pv -latexoption="-shell-escape" %<CR>
+  nnoremap <LocalLeader>m      :w<CR> :term      latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f " %<CR>
 " nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f" %<CR>
   nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f " %<CR>
 " pour avoir la quickfix window qui marche
