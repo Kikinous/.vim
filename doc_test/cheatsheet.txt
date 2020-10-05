@@ -1,10 +1,23 @@
 *cheatsheet.txt* Cheat sheet
 
 CHEAT SHEET                                                           *cheatsheet*
-Mes outils et mes mappings.
+
+ 1. Mappings ............................... |mappings|
+ 2. Navigating ........................... |navigating|
+ 3. Edition ................................. |edition|
+ 4. My Functions ....................... |my_functions|
+ 5. Plugins ................................. |plugins|
+ 6. Tips and tricks ................. |tips_and_tricks|
+ 7. Easter eggs ......................... |easter_eggs|
+ 8. Git ......................................... |git|
+ 9. Markdown ............................... |markdown|
+10. LaTeX ..................................... |LaTeX|
+11. Vim help ............................... |vim_help|
+12. Autres ................................... |autres|
+
 
 --------------------------------------------------------------------------------
-MAPPINGS~
+MAPPING                                                                 *mappings*
 *,so*                     source line or selection
 *,l*                      invisible chars toggle
 *,5*                      set cmdheight=5
@@ -15,7 +28,7 @@ Notes :
 <localLeader> = *_* = <Space>
 
 --------------------------------------------------------------------------------
-NAVIGATING~
+NAVIGATING                                                            *navigating*
 `:e`                      edit
 `:sf`                     search file
 :ol                     old file (list)
@@ -28,7 +41,8 @@ CTRL-I                  jump in of the jump list
 CTRL-O                  jump out of the jump list
 
 --------------------------------------------------------------------------------
-EDITING~
+EDITING                                                                  *editing*
+       
 :ce                     center lines
 :ri                     right-align
 :le                     left-align
@@ -43,7 +57,7 @@ gu                      Lowercase letter
 
 
 --------------------------------------------------------------------------------
-MY FUNCTIONS~
+MY FUNCTIONS                                                        *my_functions*
 AligneDroite()
 CompilePandoc()
 MonFoldText()
@@ -51,15 +65,16 @@ EffaceMapping()
 Modele()
 
 --------------------------------------------------------------------------------
-PLUGINS~
-
+PLUGINS                                                                  *plugins*
+       
 tabular~
 :Tabularize /,
 :Tabularize /^[^:]*\zs/l1c0
 :Tabularize markdown_liens
 
 --------------------------------------------------------------------------------
-TIPS and TRICKS~
+TIPS_AND_TRICKS                                                  *tips_and_tricks*
+               
 *!!*                      filter w/ external program
 :!                      run an external program
 :!wc %                  run the external wc on the file (?buffer?)
@@ -68,7 +83,8 @@ TIPS and TRICKS~
 
 
 --------------------------------------------------------------------------------
-Easter eggs~
+EASTER_EGGS                                                          *Easter_eggs*
+           
 :smile
 :help 42
 :help holy-grail
@@ -80,7 +96,8 @@ Easter eggs~
 :help howdoi            |You can't! (yet)|	do dishes using Vim
 
 --------------------------------------------------------------------------------
-GIT~
+GIT                                                                          *git*
+   
 :G                      Git status
 *-*                       add/remove
 *dd*                      diff  split
@@ -89,13 +106,15 @@ GIT~
 :Gpush                  Git commit
 
 --------------------------------------------------------------------------------
-MARKDOWN~
+MARKDOWN~                                                              *markdown*
+         
 *_md*                     Markdown.pl to html (John Gruber)
 *_p*                      pandoc to html
 :TocdownToggle          TOC in a split (doesnt work great)
 
 --------------------------------------------------------------------------------
-LATEX~
+LATEX                                                                      *LaTeX*
+     
 
 *_m*                      :term      latexmk -pdf   -pv -latexoption="-shell-escape" %<CR>
 *_l*                      :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error" %<CR>
@@ -106,8 +125,14 @@ insert mode~
 *_sec*                    \section{} <++> snippet
 *__*                      jump to <++>
 
+ 
 --------------------------------------------------------------------------------
-AUTRES~
+VIM_HELP                                                                *vim_help*
+:helptags ~/.vim/doc_test
+
+--------------------------------------------------------------------------------
+AUTRES                                                                    *autres*
+      
 
 `::::::::::::::::::::::::`
 `________________________`
@@ -119,3 +144,4 @@ AUTRES~
  set ft=help
 <
 vim:set filetype=help textwidth=78 ve=all:
+vim:tw=78:ts=8:noet:ft=help:ma:ve=all:nolist

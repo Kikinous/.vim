@@ -220,7 +220,7 @@ function! CompilePandoc(format) "{{{2
 "       }}}
     endif
 endfunction
-nnoremap  <Leader>m      :execute CompilePandoc("pdf")<CR>
+nnoremap  <Leader>md     :execute CompilePandoc("pdf")<CR>
 "}}}
 function! MonFoldText() "{{{2
   let line = getline(v:foldstart)

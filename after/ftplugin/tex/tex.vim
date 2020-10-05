@@ -103,6 +103,9 @@ augroup ParametresLaTeX
   nnoremap <LocalLeader>m      :w<CR> :term      latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f " %<CR>
 " nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f" %<CR>
   nnoremap <LocalLeader>l      :w<CR> :Dispatch  latexmk -pdf   -pv -latexoption="-shell-escape -halt-on-error -f " %<CR>
+" ESSAIE de compilation avec le make internal à vim
+  set makeprg=latexmk\ -pdf\ -pv\ -latexoption="-shell-escape -halt-on-error -f"\ %
+  nnoremap <LocalLeader>M      :w<CR> :make<CR>
 " pour avoir la quickfix window qui marche
 " https://github.com/lervag/vimtex/blob/master/autoload/vimtex/compiler/latexmk.vim
 "
