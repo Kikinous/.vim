@@ -28,3 +28,6 @@
 [submodule "pack/lesplugins/start/nnn"]
 	path = pack/lesplugins/start/nnn
 	url = https://github.com/mcchrish/nnn.vim
+[submodule "pack/lesplugins/opt/tagbar"]
+	path = pack/lesplugins/opt/tagbar
+	url = https://github.com/preservim/tagbar.git

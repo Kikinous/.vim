@@ -92,6 +92,10 @@ augroup ParametresLaTeX
   let g:latex_toc_width=50
 " charge vim help des packages
   silent! helptags ALL
+
+
+  execute "packadd tagbar"
+
 "}}}
   "
   " Compilation: {{{1
