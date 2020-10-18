@@ -870,4 +870,5 @@ let g:Startscreen_function = function('T')
 
 command! -nargs=+ -complete=shellcmd RunBackgroundCommand call RunBackgroundCommand(<q-args>)
 
+
 " vim: foldmethod=marker : foldlevel=1 : modifiable : virtualedit=all : noma
