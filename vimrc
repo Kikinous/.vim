@@ -101,7 +101,8 @@ iabbr lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius
 "}}}
 "}}} "}}}
 " FUNCTIONS: {{{1
-function! AlignDroite() "{{{2
+" AlignDroite() {{{2
+function! AlignDroite() 
   " Fonction: alignement à droite à 80 caracteres
   " Julien Borghetti  v1.0  (2020-01-13)
   set cmdheight=4                                                               " évite le 'Hit ENTER to continue'
@@ -119,7 +120,8 @@ function! AlignDroite() "{{{2
 endfunction
 nnoremap <Leader>ad  :call AlignDroite()<CR>
 " }}}
-function! CompilePandoc(format) "{{{2
+" CompilePandoc(format) {{{2
+function! CompilePandoc(format) 
     let l:debug = "no"
     if exists("g:loaded_dispatch")
         if l:debug == "yes"
@@ -164,7 +166,7 @@ function! CompilePandoc(format) "{{{2
 "           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template bootstrap.html5          --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
 "           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3 --template uikit.html5              --css $HOME/.pandoc/templates/stylesheets/uikit.css
 "           Dispatch! pandoc % -o %.html -s --toc --toc-depth 3                                     --css $HOME/.pandoc/templates/stylesheets/bootstrap.css
-"           Dispatch! open %:r.html
+            Dispatch! open %:r.html
 "           Dispatch! open %.html
 "           return
 "           }}} 
@@ -222,14 +224,16 @@ function! CompilePandoc(format) "{{{2
 endfunction
 nnoremap  <Leader>md     :execute CompilePandoc("pdf")<CR>
 "}}}
-function! MonFoldText() "{{{2
+" MonFoldText() {{{2
+function! MonFoldText() 
   let line = getline(v:foldstart)
   let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
   return v:folddashes . sub
 endfunction
 " }}}
 "}}}
-function! EffaceMapping() "{{{2
+" EffaceMapping() {{{2
+function! EffaceMapping() 
 " MARCHE PAS ENCORE --> essai de la fonction :mapclear
 " Avec les sorties de nmap
   silent! unmap <C-P>                  "   <Plug>(ctrlp)
@@ -288,7 +292,8 @@ function! EffaceMapping() "{{{2
 " silent! unmap <D-v>
 endfunction
 " }}}
-function! s:align() "{{{2
+" s:align() {{{2
+function! s:align() 
   " par tpope : aligne les barres d'une table
   " utilisé par le mapping inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
   let p = '^\s*|\s.*\s|\s*$'
@@ -300,7 +305,8 @@ function! s:align() "{{{2
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction "}}}
-function! Modele() "{{{2
+" Modele() "{{{2
+function! Modele()
   " Fonction: snippet d'une fonction vimscript
   " Julien Borghetti  v1.0  (2020-01-13)
   set cmdheight=4                                                               " évite le 'Hit ENTER to continue'
@@ -404,7 +410,7 @@ function! SaveAndExecutePdfLaTeX()
 endfunction
 
 "}}}
-" Efface les registres {{{2
+" WipeReg {{{2
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor "}}}
 " Async jobs {{{2
 " This callback will be executed when the entire command is completed

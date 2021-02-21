@@ -2,8 +2,8 @@
 
 CHEAT SHEET                                                           *cheatsheet*
 
- 1. Mappings ............................... |mappings|
- 2. Navigating ........................... |navigating|
+ 1. Navigating ........................... |navigating|
+ 2. Mappings ............................... |mappings|
  3. Edition ................................. |edition|
  4. My Functions ....................... |my_functions|
  5. Plugins ................................. |plugins|
@@ -14,18 +14,6 @@ CHEAT SHEET                                                           *cheatshee
 10. LaTeX ..................................... |LaTeX|
 11. Vim help ............................... |vim_help|
 12. Autres ................................... |autres|
-
-
---------------------------------------------------------------------------------
-MAPPING                                                                 *mappings*
-*,so*                     source line or selection
-*,l*                      invisible chars toggle
-*,5*                      set cmdheight=5
-*,st*                     signature toggle
-
-Notes :
-<Leader> = *,*
-<localLeader> = *_* = <Space>
 
 --------------------------------------------------------------------------------
 NAVIGATING                                                            *navigating*
@@ -39,6 +27,18 @@ CTRL-t                  jump back
 *gE*                      end prior WORD
 CTRL-I                  jump in of the jump list
 CTRL-O                  jump out of the jump list
+
+
+--------------------------------------------------------------------------------
+MAPPING                                                                 *mappings*
+*,so*                     source line or selection
+*,l*                      invisible chars toggle
+*,5*                      set cmdheight=5
+*,st*                     signature toggle
+
+Notes :
+<Leader> = *,*
+<localLeader> = *_* = <Space>
 
 --------------------------------------------------------------------------------
 EDITING                                                                  *editing*
